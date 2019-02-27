@@ -1,0 +1,71 @@
+/**index.wxss**/
+
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+
+.weui-navbar{
+	background-color: #F8F8F8;
+}
+
+.weui-tab__content{
+    text-align: left;
+	padding: 0px 20px 0px 20px;
+	/* min-height: 100%; */
+}
+
+.empty{
+	height: 30px;
+}
+
+.tab_content_element{
+	margin: 0px 10px 30px 10px;
+	padding: 25px;
+	
+	text-align: left;
+	font-size: 22px;
+	font-weight: 500;
+	/* color:aliceblue; */
+	color:rgb(255, 255, 255);
+	text-shadow: gray 0.05em 0.05em 0.06em;
+	border-radius: 10px;
+	/* background-color: #2ecc71; */
+	/* background-color: #00b26a; */
+	/* background-color:#50af71; */
+	background-color: #60c39d;
+	box-shadow:0 6rpx 10rpx 2rpx #60c39d99;
+	/* for Android */
+  	-webkit-box-shadow:0px 3px 5px 1px #60c39d99;
+	/*for IOS*/
+}
+
+.post_button {
+    float: right;
+    /* background-color: #ffffff; */
+    position: fixed;
+    /* right: 60rpx;   */
+    /* border: 0 solid #ffffff; */
+    border-radius: 100%;
+    /* box-shadow: 0px 1px 1px #cccccc; */
+
+}
+
+#search_float{
+	width: 70px;
+	height: 70px;
+	right: 60rpx;
+	bottom: 60rpx;
+}
+
+#home_float{
+	width: 61px;
+	height: 61px;
+	left: 69rpx;
+	bottom: 69rpx;
+	background-color: rgb(228, 251, 249);
+}

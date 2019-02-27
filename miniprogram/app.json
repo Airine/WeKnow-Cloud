@@ -1,0 +1,36 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/study/study",
+		"pages/info/info"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "WeKnow 问答",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"selectedColor": "#17ad24",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "百事通",
+				"iconPath": "/src/icon/book.png",
+				"selectedIconPath": "/src/icon/book-1.png"
+			},
+			{
+				"pagePath": "pages/study/study",
+				"text": "大学霸",
+				"iconPath": "/src/icon/study.png",
+				"selectedIconPath": "/src/icon/study-1.png"
+			},
+			{
+				"pagePath": "pages/info/info",
+				"text": "个人信息",
+				"iconPath": "/src/icon/person.png",
+				"selectedIconPath": "/src/icon/person-1.png"
+			}
+		]
+	}
+}
