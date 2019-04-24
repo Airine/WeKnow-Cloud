@@ -2,7 +2,8 @@
 	"pages": [
 		"pages/index/index",
 		"pages/study/study",
-		"pages/info/info"
+		"pages/info/info",
+		"pages/content/content"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

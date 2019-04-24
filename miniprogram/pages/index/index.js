@@ -26,7 +26,9 @@ Page({
 		sliderOffset: 0,
 		sliderLeft: 0,
 		// 选项相关
-		titles: fileData.titleData(),
+		// titles: fileData.titleData(),
+
+		posts: null,
 
 		scrollable: false,
 		content: false,
@@ -135,9 +137,52 @@ Page({
 	},
 
 	onTapTitle: function(e) {
+		var that = this;
 		var _data = e.currentTarget.dataset;
 		console.log('Now tap title:');
 		console.log(_data);
+		this.setData({
+			content: true
+		});
+		wx.request({
+			url: "http://citric-acid.com.cn/posts",
+			method: "GET",
+			data: {"subcategory": _data.title},
+			success: function (res) {
+				console.log(res.data)
+				that.setData({
+					posts: res.data
+				})
+			},
+			fail: function (err) {
+				console.log(err)
+			}
+
+		});
 		// wx.navigateTo() -> according to the data.content
+	},
+	tapPost: function (e) {
+		var _data = e.currentTarget.dataset;
+		console.log(_data);
+		wx.request({
+			url: "http://citric-acid.com.cn/posts/"+_data.id,
+			method: "GET",
+			success: function (res) {
+				console.log(res.data);
+				console.log(res.data.content);
+				app.globalData.markdown = res.data.content;
+				console.log(app.globalData.markdown)
+				// app.globalData.markdown = res.data.content;
+			},
+			fail: function (err) {
+				console.log(err)
+			}
+
+		});
+	},
+	tapBack: function (e) {
+		this.setData({
+			content: false
+		});
 	}
 });

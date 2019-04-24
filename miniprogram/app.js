@@ -9,9 +9,24 @@ App({
         traceUser: true,
       })
     }
-
-    this.globalData = {
-		userInfo: null
+	
+	this.globalData = {
+		userInfo: null,
+		markdown: "# Test"
 	}
+
+	wx.getSystemInfo({
+		success: e => {
+			this.globalData.StatusBar = e.statusBarHeight;
+			let custom = wx.getMenuButtonBoundingClientRect();
+			this.globalData.Custom = custom;
+			this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+		}
+	})
+	console.log(this.globalData.StatusBar);
+	console.log(this.globalData.CustomBar);
+	console.log(this.globalData.Custom);
+
+ 
   }
 })

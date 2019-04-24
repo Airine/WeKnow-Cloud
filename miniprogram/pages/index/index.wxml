@@ -1,48 +1,21 @@
 <!--index.wxml-->
-<scroll-view class="page" scroll-y="true" scroll-with-animation='true' scroll-top="{{topNum}}" bindscrolltolower="lower" bindscrolltoupper="upper">
+<view class="page">
+<scroll-view class="scroll-main" scroll-y="true" scroll-with-animation='true' scroll-top="{{topNum}}" bindscrolltolower="lower" bindscrolltoupper="upper">
     <view class="fist-part">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
-            </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-        </view>
+		<view class="cu-bar search bg-white">
+			<view class="cu-avatar round" style="background-image:url('/src/img/logo.jpeg');"></view>
 
-        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-        </view>
+			<view class='search-form round'>
+			<text class="icon-search"></text>
+			<input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+			</view>
+			<view class='action'>
+			<button class='cu-btn bg-green shadow-blur round'>搜索</button>
+			</view>
+		</view>
 
 		<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="600" hidden="{{swiperOn}}">
-		<block wx:for="{{movies}}" wx:for-index="index">  
+		<block wx:for="{{movies}}" wx:key="url" wx:for-index="index">  
 			<swiper-item>  
 			<image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
 			</swiper-item>  
@@ -64,22 +37,33 @@
 			<block wx:for="{{tabs}}" wx:key="*this" >
 				<view id="{{index}}" class="weui-tab__content" hidden="{{activeIndex != index || content}}">
 					<view class="empty"></view>
-					<block wx:for="{{item.subcategories}}">
+					<block wx:for="{{item.subcategories}}" wx:key="*this">
 						<view class="tab_content_element" bindtap="onTapTitle" data-title="{{item}}">{{item}}</view>
 					</block>
 				</view>
 			</block>
 			
-			<view class="weui-tab__content" hidden="{{!content}}">
+			<view hidden="{{!content}}">
+
+				<view class="cu-list menu sm-border">
+					<block wx:for="{{posts}}" wx:key="*this">
+						<view class="cu-item arrow">
+							<navigator class='content' hover-class='none' url='../content/content' open-type="navigate" bindtap="tapPost" data-title="{{item.title}}" data-id="{{item.id}}">
+							<text class='icon-discoverfill text-orange'></text>
+							<text class='text-black'>{{item.id}}. {{item.title}}</text>
+							</navigator>
+						</view>
+					</block>
+					<view class='back_button text-center' bindtap="tapBack">
+						<button class='cu-btn round line-green'>返回</button>
+					</view>
+
+				</view>
+
 			</view>
 			
 		</scroll-view>
 	</view>
-
-	<view bindtap="tapSearch">
-		<image class="post_button" id="search_float" src="../../src/icon/sousuo.png"/>
-	</view>
-	<view bindtap="tapHome" hidden="{{!swiperOn}}">
-		<image class="post_button" id="home_float" src="../../src/icon/home-2.png"/>
-	</view>
 </scroll-view>
+
+</view>
