@@ -1,1 +1,5 @@
 /* miniprogram/pages/content/content.wxss */
+
+.markdown{
+	padding: 5%;
+}

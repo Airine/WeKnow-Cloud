@@ -168,11 +168,17 @@ Page({
 			url: "http://citric-acid.com.cn/posts/"+_data.id,
 			method: "GET",
 			success: function (res) {
-				console.log(res.data);
-				console.log(res.data.content);
+				// console.log(res.data);
+				// console.log(res.data.content);
 				app.globalData.markdown = res.data.content;
 				console.log(app.globalData.markdown)
 				// app.globalData.markdown = res.data.content;
+				wx.navigateTo({
+					url: '../content/content',
+					success: function(res) {},
+					fail: function(res) {},
+					complete: function(res) {},
+				})
 			},
 			fail: function (err) {
 				console.log(err)

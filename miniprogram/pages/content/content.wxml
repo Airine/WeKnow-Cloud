@@ -1,2 +1,4 @@
 <!--miniprogram/pages/content/content.wxml-->
-<wemark md="{{markdown}}" link highlight type="wemark"></wemark>
+<view class="page markdown">
+	<wemark md="{{markdown}}" link highlight type="wemark"></wemark>
+</view>

@@ -7,14 +7,16 @@ Page({
 	 * Page initial data
 	 */
 	data: {
-		markdown: app.globalData.markdown
+		markdown: null
 	},
 
 	/**
 	 * Lifecycle function--Called when page load
 	 */
 	onLoad: function (options) {
-
+		this.setData({
+			markdown: app.globalData.markdown
+		});
 	},
 
 	/**
