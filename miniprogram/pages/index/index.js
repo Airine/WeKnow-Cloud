@@ -19,7 +19,9 @@ Page({
 			{ url: '../../src/img/4.jpeg' }
 		],
 		// tab 相关
-		tabs: ["南科生活", "南科办事", "南科娱乐"],
+		tabs: [],
+		// subs: [],
+
 		activeIndex: 0,
 		sliderOffset: 0,
 		sliderLeft: 0,
@@ -63,6 +65,7 @@ Page({
 
 		wx.request({
 			url: "http://119.29.214.174/categories/",
+			// url: "http://citric-acid.com.cn/categories/",
 			method: "GET",
 			// data: data,
 			// header: {
@@ -70,6 +73,9 @@ Page({
 			// },
 			success: function (res) {
 				console.log(res.data)
+				that.setData({
+					tabs: res.data
+				})
 			},
 			fail: function (err) {
 				console.log(err)

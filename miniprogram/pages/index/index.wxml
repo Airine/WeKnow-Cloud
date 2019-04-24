@@ -54,37 +54,28 @@
 		<view class="weui-navbar">
 			<block wx:for="{{tabs}}" wx:key="*this">
 				<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-					<view class="weui-navbar__title">{{item}}</view>
+					<view class="weui-navbar__title">{{item.name}}</view>
 				</view>
 			</block>
 			<view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
 		</view>
-		<scroll-view class="weui-tab__panel" scroll-y="{{scrollable}}" scroll-with-animation='true' scroll-top="{{tabTop}}">
-			
-			<view class="weui-tab__content" hidden="{{activeIndex != 0 || content}}">
-				<view class="empty"></view>
-				<block wx:for="{{titles.lifes}}">
-					<view class="tab_content_element" bindtap="onTapTitle" data-id="{{item.id}}" data-title="{{item.title}}" data-content="{{item.content}}">{{item.title}}</view>
-				</block>
-			</view>
-			
-			<view class="weui-tab__content" hidden="{{activeIndex != 1 || content}}">
-				<view class="empty"></view>
-				<block wx:for="{{titles.works}}">
-					<view class="tab_content_element" bindtap="onTapTitle" data-id="{{item.id}}" data-title="{{item.title}}" data-content="{{item.content}}">{{item.title}}</view>
-				</block>
-			</view>
 
-			<view class="weui-tab__content" hidden="{{activeIndex != 2 || content}}">
-				<view class="empty"></view>
-				<block wx:for="{{titles.funs}}">
-					<view class="tab_content_element" bindtap="onTapTitle" data-id="{{item.id}}" data-title="{{item.title}}" data-content="{{item.content}}">{{item.title}}</view>
-				</block>
+		<scroll-view class="weui-tab__panel" scroll-y="{{scrollable}}" scroll-with-animation='true' scroll-top="{{tabTop}}">
+			<block wx:for="{{tabs}}" wx:key="*this" >
+				<view id="{{index}}" class="weui-tab__content" hidden="{{activeIndex != index || content}}">
+					<view class="empty"></view>
+					<block wx:for="{{item.subcategories}}">
+						<view class="tab_content_element" bindtap="onTapTitle" data-title="{{item}}">{{item}}</view>
+					</block>
+				</view>
+			</block>
+			
+			<view class="weui-tab__content" hidden="{{!content}}">
 			</view>
-			<view class="weui-tab__content" hidden="{{activeIndex != 0 || !content}}">
-			</view>
+			
 		</scroll-view>
 	</view>
+
 	<view bindtap="tapSearch">
 		<image class="post_button" id="search_float" src="../../src/icon/sousuo.png"/>
 	</view>
