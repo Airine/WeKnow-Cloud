@@ -54,14 +54,6 @@ Page({
 	},
 	onLoad: function () {
 		var that = this;
-		wx.getSystemInfo({
-			success: function (res) {
-				that.setData({
-					sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-					sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-				});
-			}
-		});
 
 		wx.request({
 			url: "http://119.29.214.174/categories/",
@@ -76,12 +68,20 @@ Page({
 				that.setData({
 					tabs: res.data
 				})
+				wx.getSystemInfo({
+					success: function (res) {
+						that.setData({
+							sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+							sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+						});
+					}
+				});
 			},
 			fail: function (err) {
 				console.log(err)
 			}
 
-		})
+		});
 	},
 
 	tabClick: function (e) {
