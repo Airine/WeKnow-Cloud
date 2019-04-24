@@ -60,6 +60,22 @@ Page({
 				});
 			}
 		});
+
+		wx.request({
+			url: "http://119.29.214.174/categories/",
+			method: "GET",
+			// data: data,
+			// header: {
+			// 	"Content-Type":"application/json"
+			// },
+			success: function (res) {
+				console.log(res.data)
+			},
+			fail: function (err) {
+				console.log(err)
+			}
+
+		})
 	},
 
 	tabClick: function (e) {
