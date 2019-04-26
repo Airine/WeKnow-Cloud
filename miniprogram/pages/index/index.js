@@ -7,6 +7,14 @@ var fileData = require('../../utils/data.js')
 
 Page({
 	data: {
+    // 用户信息
+    userInfo: null,
+    avatarUrl: '/src/icon/loginDefault.png',
+    logged: false,
+    takeSession: false,
+    requestResult: '',
+
+    // 显示相关
 		topNum: 0,
 		tabTop: 0,
 		inputShowed: false,
@@ -83,7 +91,35 @@ Page({
 				console.log(err)
 			}
 
-		});
+	  });
+
+    // 接口更新，禁止载入时要求授权
+    // 查看是否授权
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，加载global全局变量
+          var app = getApp()
+          this.setData({
+            logged: true,
+            avatarUrl: app.globalData.avatarUrl,
+            userInfo: app.globalData.userInfo,
+          });
+          console.log('userInfo', res.userInfo)
+          
+          // getUserInfo已废弃
+          // wx.getUserInfo({
+          //   success: res => {
+          //     this.setData({
+          //       avatarUrl: res.userInfo.avatarUrl,
+          //       userInfo: res.userInfo,
+          //     })
+          //     console.log('userInfo', res.userInfo)
+          //   }
+          // })
+        }
+      }
+    })
 	},
 
 	tabClick: function (e) {
@@ -190,5 +226,47 @@ Page({
 		this.setData({
 			content: false
 		});
-	}
+	},
+
+  // 登录相关函数
+  // 获取用户信息
+  onGetUserInfo: function (e) {
+    if (!this.logged && e.detail.userInfo) {
+      this.setData({
+        logged: true,
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        userInfo: e.detail.userInfo
+      });
+      // 全局变量赋值
+      app.globalData.logged = true,
+      app.globalData.avatarUrl= e.detail.userInfo.avatarUrl,
+      app.globalData.userInfo = e.detail.userInfo
+      console.log('user info', e.detail.userInfo);
+      // 调用云函数,存储openid
+      this.onGetOpenid();
+    }
+  },
+
+  // 调用云函数
+  onGetOpenid: function () {
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid);
+        // 测试
+        app.globalData.openid = res.result.openid;
+        console.log('global data', app.globalData.openid)
+        // wx.navigateTo({
+        //   url: '../userConsole/displaySuccess/displaySuccess',
+        // })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        // wx.navigateTo({
+        //   url: '../deployFunctions/deployFunctions',
+        // })
+      }
+    })
+  },
 });

@@ -68,7 +68,7 @@ map,.mapBox{
 }
 
 .cu-avatar.xl {
-	width: 168rpx;
-	height: 168rpx;
-	font-size: 3.5em;
+	width: 142rpx;
+	height: 142rpx;
+	font-size: 3em;
 }

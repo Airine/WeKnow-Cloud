@@ -11,8 +11,12 @@ App({
     }
 	
 	this.globalData = {
-		userInfo: null,
-		markdown: "# Test"
+		// 用户信息
+    userInfo: null,
+		markdown: "# Test",
+    openid: null,
+    avatarUrl: '/src/icon/loginDefault.png',
+    logged: false,
 	}
 
 	wx.getSystemInfo({
