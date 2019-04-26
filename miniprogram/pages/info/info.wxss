@@ -1,5 +1,5 @@
 .UCenter-bg {
-  background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
+  background-image: url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);
   background-size: cover;
   background-position: center bottom;
   height: 440rpx;
@@ -10,7 +10,7 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color:dimgrey;
   font-weight: 300;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }

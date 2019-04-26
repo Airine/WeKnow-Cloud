@@ -1,6 +1,17 @@
 <!--index.wxml-->
-<view class="page">
+
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-black bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+    <view class='content' style='top:{{StatusBar}}px;'>
+      <!-- <image src="/src/img/text-logo.png" mode='widthFix'></image> -->
+	  <text>Citric Know</text>
+    </view>
+  </view>
+</view>
+
+<view class="page" style="height: {{pageHeight}}px">
 <scroll-view class="scroll-main" scroll-y="true" scroll-with-animation='true' scroll-top="{{topNum}}" bindscrolltolower="lower" bindscrolltoupper="upper">
+
     <view class="fist-part">
 		<view class="cu-bar search bg-white">
 			<view class="cu-avatar round" style="background-image:url('/src/img/logo.jpeg');"></view>
@@ -23,7 +34,7 @@
 		</swiper>
 	</view>
 
-	<view class="weui-tab">
+	<view class="weui-tab" style="height: {{tabHeight}}px">
 		<view class="weui-navbar">
 			<block wx:for="{{tabs}}" wx:key="*this">
 				<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">

@@ -1,2 +1,15 @@
-<!--pages/study/study.wxml-->
-<text>pages/study/study.wxml</text>
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+    <view class='content' style='top:{{StatusBar}}px;'>
+      <image src="/src/img/text-logo.png" mode='widthFix'></image>
+    </view>
+  </view>
+</view>
+<view class="cu-card">
+  <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
+    <view class="cardTitle">
+      {{item.title}}
+    </view>
+  </view>
+</view>
+<view class='cu-tabbar-height'></view>

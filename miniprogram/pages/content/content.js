@@ -7,7 +7,9 @@ Page({
 	 * Page initial data
 	 */
 	data: {
-		markdown: null
+		markdown: null,
+		StatusBar: app.globalData.StatusBar,
+		CustomBar: app.globalData.CustomBar,
 	},
 
 	/**

@@ -7,6 +7,12 @@ var fileData = require('../../utils/data.js')
 
 Page({
 	data: {
+		StatusBar: app.globalData.StatusBar,
+		CustomBar: app.globalData.CustomBar,
+		WindowH: app.globalData.WindowH,
+		ScreenH: app.globalData.ScreenH,
+		tabHeight: app.globalData.WindowH - app.globalData.CustomBar,
+		pageHeight: app.globalData.WindowH + app.globalData.CustomBar,
 		topNum: 0,
 		tabTop: 0,
 		inputShowed: false,
@@ -123,16 +129,6 @@ Page({
 				inputShowed: true
 			});
 		}, 300)
-	},
-	// 待删除
-	tapHome: function(e) {
-		this.setData({
-			topNum: this.data.topNum = 0,
-			tabTop: this.data.tabTop = 0,
-			swiperOn: false,
-			scrollable: false,
-			content: false
-		});
 	},
 
 	onTapTitle: function(e) {
