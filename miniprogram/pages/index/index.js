@@ -28,10 +28,13 @@ Page({
 		// 选项相关
 		// titles: fileData.titleData(),
 
-		posts: null,
+		posts: [],
 
 		scrollable: false,
 		content: false,
+
+		isLoadContent: false,
+		isLoadErr: false,
 	},
 	showInput: function () {
 		this.setData({
@@ -61,10 +64,6 @@ Page({
 			url: "http://119.29.214.174/categories/",
 			// url: "http://citric-acid.com.cn/categories/",
 			method: "GET",
-			// data: data,
-			// header: {
-			// 	"Content-Type":"application/json"
-			// },
 			success: function (res) {
 				console.log(res.data)
 				that.setData({
@@ -149,15 +148,24 @@ Page({
 			method: "GET",
 			data: {"subcategory": _data.title},
 			success: function (res) {
-				console.log(res.data)
+				// console.log(res.data)
 				that.setData({
-					posts: res.data
+					posts: res.data,
+					isLoadErr: false
 				})
 			},
 			fail: function (err) {
-				console.log(err)
+				// console.log(err)
+				that.setData({
+					isLoadErr: true
+				});
+			},
+			complete: function(res) {
+				// console.log(res)
+				that.setData({
+					isLoadContent: true
+				});
 			}
-
 		});
 		// wx.navigateTo() -> according to the data.content
 	},
@@ -188,7 +196,9 @@ Page({
 	},
 	tapBack: function (e) {
 		this.setData({
-			content: false
+			content: false,
+			isLoadContent: false,
+			posts: [],
 		});
 	}
 });
