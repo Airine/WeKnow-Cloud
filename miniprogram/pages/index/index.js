@@ -15,6 +15,12 @@ Page({
     requestResult: '',
 
     // 显示相关
+		StatusBar: app.globalData.StatusBar,
+		CustomBar: app.globalData.CustomBar,
+		WindowH: app.globalData.WindowH,
+		ScreenH: app.globalData.ScreenH,
+		tabHeight: app.globalData.WindowH - app.globalData.CustomBar,
+		pageHeight: app.globalData.WindowH + app.globalData.CustomBar,
 		topNum: 0,
 		tabTop: 0,
 		inputShowed: false,
@@ -36,10 +42,13 @@ Page({
 		// 选项相关
 		// titles: fileData.titleData(),
 
-		posts: null,
+		posts: [],
 
 		scrollable: false,
 		content: false,
+
+		isLoadContent: false,
+		isLoadErr: false,
 	},
 	showInput: function () {
 		this.setData({
@@ -69,10 +78,6 @@ Page({
 			url: "http://119.29.214.174/categories/",
 			// url: "http://citric-acid.com.cn/categories/",
 			method: "GET",
-			// data: data,
-			// header: {
-			// 	"Content-Type":"application/json"
-			// },
 			success: function (res) {
 				console.log(res.data)
 				that.setData({
@@ -161,16 +166,6 @@ Page({
 			});
 		}, 300)
 	},
-	// 待删除
-	tapHome: function(e) {
-		this.setData({
-			topNum: this.data.topNum = 0,
-			tabTop: this.data.tabTop = 0,
-			swiperOn: false,
-			scrollable: false,
-			content: false
-		});
-	},
 
 	onTapTitle: function(e) {
 		var that = this;
@@ -185,15 +180,24 @@ Page({
 			method: "GET",
 			data: {"subcategory": _data.title},
 			success: function (res) {
-				console.log(res.data)
+				// console.log(res.data)
 				that.setData({
-					posts: res.data
+					posts: res.data,
+					isLoadErr: false
 				})
 			},
 			fail: function (err) {
-				console.log(err)
+				// console.log(err)
+				that.setData({
+					isLoadErr: true
+				});
+			},
+			complete: function(res) {
+				// console.log(res)
+				that.setData({
+					isLoadContent: true
+				});
 			}
-
 		});
 		// wx.navigateTo() -> according to the data.content
 	},
@@ -224,7 +228,9 @@ Page({
 	},
 	tapBack: function (e) {
 		this.setData({
-			content: false
+			content: false,
+			isLoadContent: false,
+			posts: [],
 		});
 	},
 

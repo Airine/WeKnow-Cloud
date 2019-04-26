@@ -1,6 +1,17 @@
 <!--index.wxml-->
-<view class="page">
+
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-black bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+    <view class='content' style='top:{{StatusBar}}px;'>
+      <!-- <image src="/src/img/text-logo.png" mode='widthFix'></image> -->
+	  <text>Citric Know</text>
+    </view>
+  </view>
+</view>
+
+<view class="page" style="height: {{pageHeight}}px">
 <scroll-view class="scroll-main" scroll-y="true" scroll-with-animation='true' scroll-top="{{topNum}}" bindscrolltolower="lower" bindscrolltoupper="upper">
+
     <view class="fist-part">
 		<view class="cu-bar search bg-white">
 			<button 
@@ -28,7 +39,7 @@
 		</swiper>
 	</view>
 
-	<view class="weui-tab">
+	<view class="weui-tab" style="height: {{tabHeight}}px">
 		<view class="weui-navbar">
 			<block wx:for="{{tabs}}" wx:key="*this">
 				<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
@@ -40,11 +51,19 @@
 
 		<scroll-view class="weui-tab__panel" scroll-y="{{scrollable}}" scroll-with-animation='true' scroll-top="{{tabTop}}">
 			<block wx:for="{{tabs}}" wx:key="*this" >
-				<view id="{{index}}" class="weui-tab__content" hidden="{{activeIndex != index || content}}">
+				<view id="{{index}}" hidden="{{activeIndex != index || content}}">
 					<view class="empty"></view>
-					<block wx:for="{{item.subcategories}}" wx:key="*this">
+					<!-- <block wx:for="{{item.subcategories}}" wx:key="*this">
 						<view class="tab_content_element" bindtap="onTapTitle" data-title="{{item}}">{{item}}</view>
-					</block>
+					</block> -->
+
+					<view class='nav-list'>
+						<view class="nav-li bg-green" style='animation: show {{(index+1)*0.2+1}}s 1;-webkit-animation: show {{(index+1)*0.2+1}}s 1;' wx:for="{{item.subcategories}}" wx:key bindtap="onTapTitle" data-title="{{item}}">
+							<view class="nav-title">{{item}}</view>
+							<view class="nav-name">tempt</view>
+							<text class='icon-messagefill'></text>
+						</view>
+					</view>
 				</view>
 			</block>
 			
@@ -60,6 +79,8 @@
 							</view>
 						</view>
 					</block>
+					<view class="cu-load bg-{{!isLoadErr?'green':'red'}} {{!isLoadContent?'loading':'over'}} {{!isLoadErr?'error':''}}" hidden="{{posts.length}}"></view>
+						<!-- <text>{{posts.length}}</text> -->
 					<view class='back_button text-center' bindtap="tapBack">
 						<button class='cu-btn round line-green'>返回</button>
 					</view>

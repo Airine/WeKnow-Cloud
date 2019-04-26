@@ -12,7 +12,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeKnow 问答",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+	"navigationStyle":"custom"
   },
   "tabBar": {
     "selectedColor": "#17ad24",
