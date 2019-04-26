@@ -1,16 +1,30 @@
 <scroll-view scroll-y class="scrollPage">
+<!-- 主窗口 -->
   <view class="UCenter-bg" mode="scaleToFill">
+    <button 
+    class="cu-avatar xl round" 
+    style="background-image:url({{avatarUrl}});"  
+    mode="scaleToFill"
+    bindgetuserinfo="onGetUserInfo"
+    open-type="getUserInfo"
+    ></button>
+    <!-- 若已认证 -->
     <view 
-    class="cu-avatar xl round" style="background-image:url(/src/img/logo.jpeg)" mode="scaleToFill"></view>
-    <view class="margin-top-xl">用户尚未登录
-      <!-- <text class="text-df">v2.0</text> -->
+    class="margin-top-xl"
+    wx:if="{{logged}}"
+    >欢迎再次使用</view>
+    <!-- 若未认证 -->
+    <view 
+    class="margin-top-xl"
+    wx:else
+    >用户尚未登录</view>
+    <view class="margin-center-sm">
+      <text>{{userInfo.nickName}}</text>
     </view>
-    <!-- <view class="margin-top-sm">
-      <text>By:文晓港</text>
-    </view> -->
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="bottom" class="gif-wave"></image>
   </view>
 
+<!-- 数字组件 -->
   <view class="padding flex text-center text-grey bg-white shadow-warp">
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-orange">{{visitTotal}}</view>
@@ -28,6 +42,8 @@
         <text class="cuIcon-fork"></text> Fork</view>
     </view>
   </view>
+
+  <!-- 选单 -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about"
@@ -36,6 +52,7 @@
         <text class="text-grey">个人设置</text>
       </navigator>
     </view>
+
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/log/log" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>

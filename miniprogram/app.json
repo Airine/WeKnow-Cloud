@@ -4,7 +4,9 @@
     "pages/study/study",
     "pages/info/info",
     "pages/content/content",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/userConsole/displaySuccess/displaySuccess",
+    "pages/userConsole/displayFail/displayFail"
   ],
   "window": {
     "backgroundTextStyle": "light",

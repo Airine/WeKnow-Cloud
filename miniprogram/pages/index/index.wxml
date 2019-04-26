@@ -14,7 +14,12 @@
 
     <view class="fist-part">
 		<view class="cu-bar search bg-white">
-			<view class="cu-avatar round" style="background-image:url('/src/img/logo.jpeg');"></view>
+			<button 
+      class="cu-avatar round" 
+      style="background-image:url({{avatarUrl}});"  
+      bindgetuserinfo="onGetUserInfo"
+      open-type="getUserInfo"
+      ></button>
 
 			<view class='search-form round'>
 			<text class="icon-search"></text>
