@@ -4,25 +4,27 @@ const app = getApp()
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 // var lifeData = require('./data/life/main.js');
 var fileData = require('../../utils/data.js')
-
 Page({
 	data: {
-    // 用户信息
-    userInfo: null,
-    avatarUrl: '/src/icon/loginDefault.png',
-    logged: false,
-    takeSession: false,
-    requestResult: '',
+		// 用户信息
+		userInfo: null,
+		avatarUrl: '/src/icon/loginDefault.png',
+		logged: false,
+		takeSession: false,
+		requestResult: '',
 
-    // 显示相关
+    	// 显示相关
+		fixedH: 114,
+		fixedPercent: 85,
 		StatusBar: app.globalData.StatusBar,
 		CustomBar: app.globalData.CustomBar,
 		WindowH: app.globalData.WindowH,
-		ScreenH: app.globalData.ScreenH,
-		tabHeight: app.globalData.WindowH - app.globalData.CustomBar,
-		pageHeight: app.globalData.WindowH + app.globalData.CustomBar,
+		WindowW: app.globalData.WindowW,
+		// ScreenH: app.globalData.ScreenH,
+		// tabHeight: app.globalData.WindowH - app.globalData.CustomBar,
+		// pageHeight: app.globalData.WindowH + app.globalData.CustomBar,
 		topNum: 0,
-		tabTop: 0,
+		tabTop: false,
 		inputShowed: false,
 		inputVal: "",
 		swiperOn: false,
@@ -44,42 +46,29 @@ Page({
 
 		posts: [],
 
-		scrollable: false,
+		// scrollable: false,
 		content: false,
 
 		isLoadContent: false,
 		isLoadErr: false,
-	},
-	showInput: function () {
-		this.setData({
-			inputShowed: true
-		});
-	},
-	hideInput: function () {
-		this.setData({
-			inputVal: "",
-			inputShowed: false
-		});
-	},
-	clearInput: function () {
-		this.setData({
-			inputVal: ""
-		});
-	},
-	inputTyping: function (e) {
-		this.setData({
-			inputVal: e.detail.value
-		});
+		appear: false,
 	},
 	onLoad: function () {
 		var that = this;
-
+		var fixedHH = app.globalData.WindowW * 50 / 375 + app.globalData.CustomBar;
+		var percent = parseInt(100 - 100 * fixedHH / app.globalData.WindowH, 10);
+		// console.log(fixedHH);
+		// console.log(percent);
+		that.setData({
+			fixedH: fixedHH,
+			fixedPercent: percent
+		});
 		wx.request({
 			url: "http://119.29.214.174/categories/",
 			// url: "http://citric-acid.com.cn/categories/",
 			method: "GET",
 			success: function (res) {
-				console.log(res.data)
+				// console.log(res.data)
 				that.setData({
 					tabs: res.data
 				})
@@ -95,36 +84,49 @@ Page({
 			fail: function (err) {
 				console.log(err)
 			}
+	  	});
 
-	  });
+		// 接口更新，禁止载入时要求授权
+		// 查看是否授权
+		wx.getSetting({
+		success: res => {
+			if (res.authSetting['scope.userInfo']) {
+				// 已经授权，加载global全局变量
+				this.setData({
+					logged: true,
+					avatarUrl: app.globalData.avatarUrl,
+					userInfo: app.globalData.userInfo,
+				});
+				// console.log('userInfo', res.userInfo)有bug
+			} 
 
-    // 接口更新，禁止载入时要求授权
-    // 查看是否授权
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，加载global全局变量
-          var app = getApp()
-          this.setData({
-            logged: true,
-            avatarUrl: app.globalData.avatarUrl,
-            userInfo: app.globalData.userInfo,
-          });
-          console.log('userInfo', res.userInfo)
-          
-          // getUserInfo已废弃
-          // wx.getUserInfo({
-          //   success: res => {
-          //     this.setData({
-          //       avatarUrl: res.userInfo.avatarUrl,
-          //       userInfo: res.userInfo,
-          //     })
-          //     console.log('userInfo', res.userInfo)
-          //   }
-          // })
-        }
-      }
-    })
+			// getUserInfo已废弃
+			wx.getUserInfo({
+			success: res => {
+				this.setData({
+				avatarUrl: res.userInfo.avatarUrl,
+				userInfo: res.userInfo,
+				});
+				// console.log('userInfo', res.userInfo)
+				app.globalData.avatarUrl = res.userInfo.avatarUrl;
+				app.globalData.userInfo = res.userInfo;
+
+			}
+			});
+			
+			
+		}
+    	});
+
+		this._observer = wx.createIntersectionObserver(this)
+		this._observer
+			.relativeTo('.scroll-main')
+			.observe('.swiper', (res) => {
+				// console.log(res);
+				this.setData({
+					tabTop: res.intersectionRatio > 0
+				})
+			})
 	},
 
 	tabClick: function (e) {
@@ -142,36 +144,11 @@ Page({
 			})
 		}
 	},
-	upper: function(e){
-		this.setData({
-			scrollable: false
-		})
-	},
-	lower: function(e) {
-		this.setData({
-			scrollable: true
-		})
-	},
-	tapSearch: function(e) {
-		var that = this;
-		this.setData({
-			topNum: this.data.topNum = 0,
-			tabTop: this.data.tabTop = 0,
-			// inputShowed: true,
-			scrollable: false
-		});
-		setTimeout(function () {
-			that.setData({
-				inputShowed: true
-			});
-		}, 300)
-	},
-
 	onTapTitle: function(e) {
 		var that = this;
 		var _data = e.currentTarget.dataset;
-		console.log('Now tap title:');
-		console.log(_data);
+		// console.log('Now tap title:');
+		// console.log(_data);
 		this.setData({
 			content: true
 		});
@@ -211,7 +188,7 @@ Page({
 				// console.log(res.data);
 				// console.log(res.data.content);
 				app.globalData.markdown = res.data.content;
-				console.log(app.globalData.markdown)
+				// console.log(app.globalData.markdown)
 				// app.globalData.markdown = res.data.content;
 				wx.navigateTo({
 					url: '../content/content',
@@ -275,4 +252,7 @@ Page({
       }
     })
   },
+	onUnload() {
+		if (this._observer) this._observer.disconnect()
+	}
 });
