@@ -86,7 +86,3 @@
 	bottom: 69rpx;
 	background-color: rgb(228, 251, 249);
 }
-
-.top-bar{}
-
-.tab-bar{}
