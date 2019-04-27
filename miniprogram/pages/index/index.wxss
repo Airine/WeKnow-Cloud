@@ -1,5 +1,14 @@
 /**index.wxss**/
 
+/* .wrap-tab{
+
+} */
+
+.custom-tab__panel{
+	height:100%;
+	padding-top:50px;
+}
+
 .back_button{
 	margin-top: 25px;
 }
@@ -24,7 +33,7 @@
 .weui-tab__content{
     text-align: left;
 	padding: 0px 20px 0px 20px;
-	/* min-height: 100%; */
+	min-height: 100%;
 }
 
 .empty{
@@ -77,3 +86,7 @@
 	bottom: 69rpx;
 	background-color: rgb(228, 251, 249);
 }
+
+.top-bar{}
+
+.tab-bar{}

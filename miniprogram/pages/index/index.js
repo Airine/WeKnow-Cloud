@@ -4,7 +4,6 @@ const app = getApp()
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 // var lifeData = require('./data/life/main.js');
 var fileData = require('../../utils/data.js')
-
 Page({
 	data: {
     // 用户信息
@@ -44,11 +43,17 @@ Page({
 
 		posts: [],
 
-		scrollable: false,
+		// scrollable: false,
 		content: false,
 
 		isLoadContent: false,
 		isLoadErr: false,
+		appear: false,
+	},
+	onMainScroll(){
+		// console.log(this.data.topNum);
+		console.log("srolling")
+		
 	},
 	showInput: function () {
 		this.setData({
@@ -95,36 +100,45 @@ Page({
 			fail: function (err) {
 				console.log(err)
 			}
+	  	});
 
-	  });
+		// 接口更新，禁止载入时要求授权
+		// 查看是否授权
+		wx.getSetting({
+		success: res => {
+			if (res.authSetting['scope.userInfo']) {
+			// 已经授权，加载global全局变量
+			var app = getApp()
+			this.setData({
+				logged: true,
+				avatarUrl: app.globalData.avatarUrl,
+				userInfo: app.globalData.userInfo,
+			});
+			console.log('userInfo', res.userInfo)
+			
+			// getUserInfo已废弃
+			// wx.getUserInfo({
+			//   success: res => {
+			//     this.setData({
+			//       avatarUrl: res.userInfo.avatarUrl,
+			//       userInfo: res.userInfo,
+			//     })
+			//     console.log('userInfo', res.userInfo)
+			//   }
+			// })
+			}
+		}
+    	});
 
-    // 接口更新，禁止载入时要求授权
-    // 查看是否授权
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，加载global全局变量
-          var app = getApp()
-          this.setData({
-            logged: true,
-            avatarUrl: app.globalData.avatarUrl,
-            userInfo: app.globalData.userInfo,
-          });
-          console.log('userInfo', res.userInfo)
-          
-          // getUserInfo已废弃
-          // wx.getUserInfo({
-          //   success: res => {
-          //     this.setData({
-          //       avatarUrl: res.userInfo.avatarUrl,
-          //       userInfo: res.userInfo,
-          //     })
-          //     console.log('userInfo', res.userInfo)
-          //   }
-          // })
-        }
-      }
-    })
+		this._observer = wx.createIntersectionObserver(this)
+		this._observer
+			.relativeTo('.top-bar')
+			.observe('.search-bar', (res) => {
+				console.log(res);
+				this.setData({
+					appear: res.intersectionRatio > 0
+				})
+			})
 	},
 
 	tabClick: function (e) {
@@ -146,6 +160,7 @@ Page({
 		this.setData({
 			scrollable: false
 		})
+		console.log("upper");
 	},
 	lower: function(e) {
 		this.setData({
