@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    
+	let custom = wx.getMenuButtonBoundingClientRect();
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -22,7 +22,7 @@ App({
 	wx.getSystemInfo({
 		success: e => {
 			this.globalData.StatusBar = e.statusBarHeight;
-			let custom = wx.getMenuButtonBoundingClientRect();
+			// let custom = wx.getMenuButtonBoundingClientRect();
 			// console.log(custom);
 			this.globalData.Custom = custom;
 			this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
