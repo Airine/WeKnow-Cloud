@@ -3,7 +3,9 @@
 const app = getApp()
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 // var lifeData = require('./data/life/main.js');
-var fileData = require('../../utils/data.js')
+var fileData = require('../../utils/data.js');
+// console.log(fileData.contentData());
+app.globalData.markdown = fileData.contentData();
 Page({
 	data: {
 		// 用户信息
@@ -35,8 +37,8 @@ Page({
 			{ url: '../../src/img/4.jpeg' }
 		],
 		// tab 相关
-		tabs: [],
-		// subs: [],
+		tabs: fileData.titleData(),
+		// tabs: [],
 
 		activeIndex: 0,
 		sliderOffset: 0,
@@ -44,7 +46,10 @@ Page({
 		// 选项相关
 		// titles: fileData.titleData(),
 
-		posts: [],
+		// posts: [],
+		posts: fileData.postData(),
+
+		// contentData: fileData.contentData(),
 
 		// scrollable: false,
 		content: false,
@@ -63,28 +68,29 @@ Page({
 			fixedH: fixedHH,
 			fixedPercent: percent
 		});
-		wx.request({
-			url: "http://119.29.214.174/categories/",
-			// url: "http://citric-acid.com.cn/categories/",
-			method: "GET",
-			success: function (res) {
-				// console.log(res.data)
-				that.setData({
-					tabs: res.data
-				})
-				wx.getSystemInfo({
-					success: function (res) {
-						that.setData({
-							sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-							sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-						});
-					}
-				});
-			},
-			fail: function (err) {
-				console.log(err)
-			}
-	  	});
+
+		// wx.request({
+		// 	url: "http://119.29.214.174/categories/",
+		// 	// url: "http://citric-acid.com.cn/categories/",
+		// 	method: "GET",
+		// 	success: function (res) {
+		// 		console.log(res.data)
+		// 		that.setData({
+		// 			tabs: res.data
+		// 		})
+		// 		wx.getSystemInfo({
+		// 			success: function (res) {
+		// 				that.setData({
+		// 					sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+		// 					sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+		// 				});
+		// 			}
+		// 		});
+		// 	},
+		// 	fail: function (err) {
+		// 		console.log(err)
+		// 	}
+	  	// });
 
 		// 接口更新，禁止载入时要求授权
 		// 查看是否授权
@@ -150,64 +156,73 @@ Page({
 		// console.log('Now tap title:');
 		// console.log(_data);
 		this.setData({
-			content: true
+			content: true,
+			isLoadContent: true,
+
 		});
-		wx.request({
-			url: "http://citric-acid.com.cn/posts",
-			method: "GET",
-			data: {"subcategory": _data.title},
-			success: function (res) {
-				// console.log(res.data)
-				that.setData({
-					posts: res.data,
-					isLoadErr: false
-				})
-			},
-			fail: function (err) {
-				// console.log(err)
-				that.setData({
-					isLoadErr: true
-				});
-			},
-			complete: function(res) {
-				// console.log(res)
-				that.setData({
-					isLoadContent: true
-				});
-			}
-		});
+		// wx.request({
+		// 	url: "http://citric-acid.com.cn/posts",
+		// 	method: "GET",
+		// 	data: {"subcategory": _data.title},
+		// 	success: function (res) {
+		// 		// console.log(res.data)
+		// 		that.setData({
+		// 			posts: res.data,
+		// 			isLoadErr: false
+		// 		})
+		// 	},
+		// 	fail: function (err) {
+		// 		// console.log(err)
+		// 		that.setData({
+		// 			isLoadErr: true
+		// 		});
+		// 	},
+		// 	complete: function(res) {
+		// 		// console.log(res)
+		// 		that.setData({
+		// 			isLoadContent: true
+		// 		});
+		// 	}
+		// });
+
 		// wx.navigateTo() -> according to the data.content
 	},
 	tapPost: function (e) {
 		var _data = e.currentTarget.dataset;
 		console.log(_data);
-		wx.request({
-			url: "http://citric-acid.com.cn/posts/"+_data.id,
-			method: "GET",
-			success: function (res) {
-				// console.log(res.data);
-				// console.log(res.data.content);
-				app.globalData.markdown = res.data.content;
-				// console.log(app.globalData.markdown)
-				// app.globalData.markdown = res.data.content;
-				wx.navigateTo({
-					url: '../content/content',
-					success: function(res) {},
-					fail: function(res) {},
-					complete: function(res) {},
-				})
-			},
-			fail: function (err) {
-				console.log(err)
-			}
+		// wx.request({
+		// 	url: "http://citric-acid.com.cn/posts/"+_data.id,
+		// 	method: "GET",
+		// 	success: function (res) {
+		// 		// console.log(res.data);
+		// 		console.log(res.data.content);
+		// 		app.globalData.markdown = res.data.content;
+		// 		// console.log(app.globalData.markdown)
+		// 		// app.globalData.markdown = res.data.content;
+		// 		wx.navigateTo({
+		// 			url: '../content/content',
+		// 			success: function(res) {},
+		// 			fail: function(res) {},
+		// 			complete: function(res) {},
+		// 		})
+		// 	},
+		// 	fail: function (err) {
+		// 		console.log(err)
+		// 	}
+		// });
 
-		});
+		wx.navigateTo({
+			url: '../content/content',
+			success: function (res) { },
+			fail: function (res) { },
+			complete: function (res) { },
+		})
 	},
 	tapBack: function (e) {
 		this.setData({
 			content: false,
 			isLoadContent: false,
-			posts: [],
+			// posts: [],
 		});
 	},
 
