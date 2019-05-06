@@ -64,8 +64,8 @@ Page({
 			fixedPercent: percent
 		});
 		wx.request({
-			url: "http://119.29.214.174/categories/",
-			// url: "http://citric-acid.com.cn/categories/",
+			// url: "http://119.29.214.174/categories/",
+			url: "http://dev.citric-acid.com.cn/categories/",
 			method: "GET",
 			success: function (res) {
 				// console.log(res.data)
@@ -153,7 +153,7 @@ Page({
 			content: true
 		});
 		wx.request({
-			url: "http://citric-acid.com.cn/posts",
+			url: "http://dev.citric-acid.com.cn/posts",
 			method: "GET",
 			data: {"subcategory": _data.title},
 			success: function (res) {
@@ -182,7 +182,7 @@ Page({
 		var _data = e.currentTarget.dataset;
 		console.log(_data);
 		wx.request({
-			url: "http://citric-acid.com.cn/posts/"+_data.id,
+			url: "http://dev.citric-acid.com.cn/posts/"+_data.id,
 			method: "GET",
 			success: function (res) {
 				// console.log(res.data);

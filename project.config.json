@@ -8,7 +8,8 @@
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"appid": "wxc0b7dda018a84c5e",
 	"projectname": "WeKnow-cloud",

@@ -72,12 +72,12 @@
 			<view hidden="{{!content}}">
 
 				<view class="cu-list menu sm-border">
-					<block wx:for="{{posts}}" wx:key="*this">
+					<block wx:for="{{posts}}" wx:key="*this" wx:for-index="ind">
 						<view class="cu-item arrow">
 						<!-- url='../content/content' open-type="navigate" -->
 							<view class='content' hover-class='none' bindtap="tapPost" data-title="{{item.title}}" data-id="{{item.id}}">
 							<text class='icon-discoverfill text-orange'></text>
-							<text class='text-black'>{{item.id}}. {{item.title}}</text>
+							<text class='text-black'>{{ind+1}}. {{item.title}}</text>
 							</view>
 						</view>
 					</block>
