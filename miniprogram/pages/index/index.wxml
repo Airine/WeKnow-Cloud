@@ -9,6 +9,15 @@
   </view>
 </view>
 
+<view class="weui-navbar tab-bar" style="position:fixed; top: {{fixedH}}px;" hidden='{{tabTop}}'>
+			<block wx:for="{{tabs}}" wx:key="*this">
+				<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+					<view class="weui-navbar__title">{{item.name}}</view>
+				</view>
+			</block>
+			<view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+		</view>
+
 <view class="cu-bar search bg-white">
 			<button 
 			class="cu-avatar round" 
@@ -28,20 +37,17 @@
 
 
 <scroll-view class="scroll-main" scroll-y="true" style="position:fixed; top:{{fixedH}}px; height: {{fixedPercent}}%;">
-
-    <view class="fist-part">
-		
-		<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="600" hidden="{{swiperOn}}">
-		<block wx:for="{{movies}}" wx:key="url" wx:for-index="index">  
-			<swiper-item>  
-			<image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
-			</swiper-item>  
-		</block>  
-		</swiper>
-	</view>
+	
+	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="600" hidden="{{swiperOn}}">
+	<block wx:for="{{movies}}" wx:key="url" wx:for-index="index">  
+		<swiper-item>  
+		<image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+		</swiper-item>  
+	</block>  
+	</swiper>
 
 	<view class="weui-tab">
-		<view class="weui-navbar tab-bar" style="{{!tabTop?'position:fixed; top:':''}} {{fixedH}}px; ">
+		<view class="weui-navbar tab-bar" hidden='{{!tabTop}}'>
 			<block wx:for="{{tabs}}" wx:key="*this">
 				<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
 					<view class="weui-navbar__title">{{item.name}}</view>

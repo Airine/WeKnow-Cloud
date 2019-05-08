@@ -117,12 +117,12 @@ Page({
 			
 		}
     	});
-
+		console.log("load one time")
 		this._observer = wx.createIntersectionObserver(this)
 		this._observer
 			.relativeTo('.scroll-main')
 			.observe('.swiper', (res) => {
-				// console.log(res);
+				console.log(res);
 				this.setData({
 					tabTop: res.intersectionRatio > 0
 				})

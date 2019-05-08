@@ -19,19 +19,19 @@ App({
     logged: false,
 	}
 
-	wx.getSystemInfo({
-		success: e => {
-			this.globalData.StatusBar = e.statusBarHeight;
-			// let custom = wx.getMenuButtonBoundingClientRect();
-			// console.log(custom);
-			this.globalData.Custom = custom;
-			this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-			// this.globalData.CustomBar = custom.bottom + custom.top;
-			this.globalData.WindowH = e.windowHeight;
-			this.globalData.WindowW = e.windowWidth;
-			// this.globalData.ScreenH = e.screenHeight;
-			// console.log(e);
-		}
-	});
+	  wx.getSystemInfo({
+		  success: e => {
+			  this.globalData.StatusBar = e.statusBarHeight;
+			  // let custom = wx.getMenuButtonBoundingClientRect();
+			  // console.log(custom);
+			  this.globalData.Custom = custom;
+			  this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+			  // this.globalData.CustomBar = custom.bottom + custom.top;
+			  this.globalData.WindowH = e.windowHeight;
+			  this.globalData.WindowW = e.windowWidth;
+			  // this.globalData.ScreenH = e.screenHeight;
+			  // console.log(e);
+		  }
+	  });
   }
 })
