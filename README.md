@@ -13,9 +13,9 @@
    1. 信息分类获取
 
       <p float=left">
-          <img src="src/main_page.png" width="150px" style="margin-right: 100px"/>
-          <img src="src/second_page.png" width="150px" style="margin-right: 100px"/>
-      		<img src="src/third_page.png" width="150px" style="margin-right: 100px"/>
+          <img src="src/main_page.png" width="300" style="margin-right: 100px"/>
+          <img src="src/second_page.png" width="300" style="margin-right: 100px"/>
+      	   <img src="src/third_page.png" width="300"/>
       </p>
 
       ![image-20190622234932731](/Users/aaron/Documents/1-Workspace/WeChat/WeKnow-cloud/src/third_page.png)
