@@ -20,7 +20,7 @@
 
       ![image-20190622234932731](/Users/aaron/Documents/1-Workspace/WeChat/WeKnow-cloud/src/third_page.png)
 
-   1. 信息搜索
+   2. 信息搜索
 
 2. **课程工具**
 
