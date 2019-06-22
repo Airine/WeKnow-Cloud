@@ -1,0 +1,2 @@
+<!--miniprogram/pages/study/application/application.wxml-->
+<web-view src="https://application.citric-acid.com.cn/#/" />

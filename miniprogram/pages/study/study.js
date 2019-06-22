@@ -4,24 +4,24 @@ Component({
 		StatusBar: app.globalData.StatusBar,
 		CustomBar: app.globalData.CustomBar,
 		list: [{
-			title: '李涵一',
+			title: '飞跃手册',
 			img: 'https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg',
-			url: '../indexes/indexes'
+			url: './application/application'
 		},
 		{
 			title: '张子涵',
 			img: 'https://image.weilanwl.com/color2.0/plugin/wdh2236.jpg',
-			url: '../animation/animation'
+			url: './application/application'
 		},
 		{
 			title: '许涵博',
 			img: 'https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg',
-			url: '../drawer/drawer'
+			url: './application/application'
 		},
 		{
 			title: '田闰心',
 			img: 'https://image.weilanwl.com/color2.0/plugin/qpczdh2307.jpg',
-			url: '../verticalnav/verticalnav'
+			url: './application/application'
 		}
 		]
 	},

@@ -54,13 +54,14 @@
     </view>
 
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+      <navigator class="content" url="/pages/about/about" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>
         <text class="text-grey">历史记录</text>
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <view class="content" bindtap="showQrcode">
+	<!-- bindtap="showQrcode" -->
+      <view class="content">
         <text class="cuIcon-appreciatefill text-red"></text>
         <text class="text-grey">赞赏支持</text>
       </view>
@@ -72,13 +73,14 @@
       </button>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/test/list" hover-class="none">
+      <navigator class="content" url="/pages/about/about" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">Bug测试</text>
       </navigator>
     </view>
         <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+		<!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
+      <view class="content">
         <text class="cuIcon-github text-grey"></text>
         <text class="text-grey">GitHub</text>
       </view>
