@@ -8,7 +8,8 @@
 		"pages/userConsole/displaySuccess/displaySuccess",
 		"pages/userConsole/displayFail/displayFail",
 		"pages/study/course/course",
-		"pages/study/application/application"
+		"pages/study/application/application",
+    "pages/searchPage/searchPage"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

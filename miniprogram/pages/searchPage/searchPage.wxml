@@ -1,0 +1,32 @@
+<!--pages/searchPage/searchPage.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back text-black'></text> <text class='text-black'>返回</text>
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-bar search bg-white">
+	<view class='search-form round'>
+    <text class="icon-search"></text>
+      <input type="text" placeholder="搜索图片、文章、视频" bindinput="search"></input>
+    </view>
+      <navigator class='action' open-type="navigateBack" delta='1' hover-class="none">
+        <button class='cu-btn bg-green shadow-blur round'>取消</button>
+      </navigator>
+</view>
+
+<view class='content-list'>
+  <view class="cu-list menu sm-border">
+    <block wx:for="{{result}}" wx:key="*this" wx:for-index="ind">
+      <view class="cu-item arrow">
+      <!-- url='../content/content' open-type="navigate" -->
+        <view class='content' hover-class='none' bindtap="tapPost" data-title="{{item.title}}" data-id="{{item.id}}">
+        <text class='icon-discoverfill text-orange'></text>
+        <text class='text-black'>{{ind+1}}. {{item.title}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

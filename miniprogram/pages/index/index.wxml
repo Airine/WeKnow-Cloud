@@ -28,12 +28,16 @@
 
 			<view class='search-form round'>
 			<text class="icon-search"></text>
-			<input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+			<navigator class='search-input' url='../searchPage/searchPage'>
+        <text class='ph'>搜索图片、文章、视频</text>
+      </navigator>
 			</view>
-			<view class='action'>
-			<button class='cu-btn bg-green shadow-blur round'>搜索</button>
-			</view>
-		</view>
+			<navigator class='search-page' url='../searchPage/searchPage'>
+        <view class='action'>
+          <button class='cu-btn bg-green shadow-blur round'>搜索</button>
+        </view>
+      </navigator>
+</view>
 
 
 <scroll-view class="scroll-main" scroll-y="true" style="position:fixed; top:{{fixedH}}px; height: {{fixedPercent}}%;">
