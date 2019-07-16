@@ -38,8 +38,8 @@
   - [x] 信息分类
   - [x] 信息展示
     - 使用 `wemark` 对 `markdown` 文档进行渲染显示
-  - [ ] 信息搜索
-    - [ ] 前端：需要跳转到新的页面
+  - [x] 信息搜索
+    - [x] 前端：需要跳转到新的页面
     - [x] 后端：搜索功能暂时由 `tag` 搜索实现
       - API: https://dev.citric-acid.com.cn/posts/?tag=GPA
       - ![image-20190623002210169](src/Tag.png)
