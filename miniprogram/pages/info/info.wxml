@@ -1,30 +1,18 @@
 <scroll-view scroll-y class="scrollPage">
-<!-- 主窗口 -->
+  <!-- 主窗口 -->
   <view class="UCenter-bg" mode="scaleToFill">
-    <button 
-    class="cu-avatar xl round" 
-    style="background-image:url({{avatarUrl}});"  
-    mode="scaleToFill"
-    bindgetuserinfo="onGetUserInfo"
-    open-type="getUserInfo"
-    ></button>
+    <button class="cu-avatar xl round" style="background-image:url({{avatarUrl}});" mode="scaleToFill" bindgetuserinfo="onGetUserInfo" open-type="getUserInfo"></button>
     <!-- 若已认证 -->
-    <view 
-    class="margin-top-xl"
-    wx:if="{{logged}}"
-    >欢迎再次使用</view>
+    <view class="margin-top-xl" wx:if="{{logged}}">欢迎再次使用</view>
     <!-- 若未认证 -->
-    <view 
-    class="margin-top-xl"
-    wx:else
-    >用户尚未登录</view>
+    <view class="margin-top-xl" wx:else>用户尚未登录</view>
     <view class="margin-center-sm">
       <text>{{userInfo.nickName}}</text>
     </view>
     <image src="https://image.weilanwl.com/gif/wave.gif" mode="bottom" class="gif-wave"></image>
   </view>
 
-<!-- 数字组件 -->
+  <!-- 数字组件 -->
   <view class="padding flex text-center text-grey bg-white shadow-warp">
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-orange">{{visitTotal}}</view>
@@ -46,8 +34,7 @@
   <!-- 选单 -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/about"
-       hover-class="none">
+      <navigator class="content" url="/pages/about/about" hover-class="none">
         <image src="/src/icon/logoDefault.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">个人设置</text>
       </navigator>
@@ -60,7 +47,7 @@
       </navigator>
     </view>
     <view class="cu-item arrow">
-	<!-- bindtap="showQrcode" -->
+      <!-- bindtap="showQrcode" -->
       <view class="content">
         <text class="cuIcon-appreciatefill text-red"></text>
         <text class="text-grey">赞赏支持</text>
@@ -78,8 +65,8 @@
         <text class="text-grey">Bug测试</text>
       </navigator>
     </view>
-        <view class="cu-item arrow">
-		<!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
+    <view class="cu-item arrow">
+      <!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
       <view class="content">
         <text class="cuIcon-github text-grey"></text>
         <text class="text-grey">GitHub</text>
