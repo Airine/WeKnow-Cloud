@@ -1,2 +1,26 @@
 <!--miniprogram/pages/login/login.wxml-->
-<text>miniprogram/pages/login/login.wxml</text>
+
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+  </view>
+</view>
+
+<view class='login-info'>
+  <form>
+  <view class='SID'>
+	  <view class="cu-form-group margin-top">
+		  <view class='title'>SID</view>
+		  <input placeholder="Please input your Student ID" type='number' maxlength='8'></input>
+	  </view>
+  </view>
+  <view class='PWD'>
+    <view class="cu-form-group">
+		  <view class='title'>PWD</view>
+		  <input placeholder="Please input your Password" password='true'></input>
+	  </view>
+  </view>
+  </form>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-yellow lg">Login</button>
+  </view>
+</view>
