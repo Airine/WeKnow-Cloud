@@ -7,20 +7,20 @@
 
 <view class='login-info'>
   <form>
-  <view class='SID'>
-	  <view class="cu-form-group margin-top">
-		  <view class='title'>SID</view>
-		  <input placeholder="Please input your Student ID" type='number' maxlength='8'></input>
-	  </view>
-  </view>
-  <view class='PWD'>
-    <view class="cu-form-group">
-		  <view class='title'>PWD</view>
-		  <input placeholder="Please input your Password" password='true'></input>
-	  </view>
-  </view>
+    <view class='SID'>
+      <view class="cu-form-group margin-top">
+        <view class='title'>SID</view>
+        <input placeholder="Please input your Student ID" type='number' maxlength='8' bindinput='inputID'></input>
+      </view>
+    </view>
+    <view class='PWD'>
+      <view class="cu-form-group">
+        <view class='title'>PWD</view>
+        <input placeholder="Please input your Password" password='true' bindinput='inputPWD'></input>
+      </view>
+    </view>
   </form>
   <view class="padding flex flex-direction">
-    <button class="cu-btn bg-yellow lg">Login</button>
+    <button class="cu-btn bg-yellow lg" bindtap='login'>Login</button>
   </view>
 </view>
