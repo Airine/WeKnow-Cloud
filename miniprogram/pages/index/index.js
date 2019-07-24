@@ -63,6 +63,12 @@ Page({
     appear: false,
   },
   onLoad: function() {
+    // 用全局变量给SID和PWD赋值
+    this.setData({
+      SID: app.globalData.SID,
+      PWD: app.globalData.PWD
+    })
+
     var that = this;
     var fixedHH = app.globalData.WindowW * 50 / 375 + app.globalData.CustomBar;
     var percent = parseInt(100 - 100 * fixedHH / app.globalData.WindowH, 10);
@@ -95,24 +101,24 @@ Page({
       }
     });
 
-    wx.getStorage({
-      key: 'SID',
-      success: function(res) {
-        console.log(res.data)
-        that.setData({
-          SID: res.data
-        })
-      },
-    });
-    wx.getStorage({
-      key: 'PWD',
-      success: function(res) {
-        console.log(res.data)
-        that.setData({
-          PWD: res.data
-        })
-      },
-    });
+    // wx.getStorage({
+    //   key: 'SID',
+    //   success: function(res) {
+    //     console.log(res.data)
+    //     that.setData({
+    //       SID: res.data
+    //     })
+    //   },
+    // });
+    // wx.getStorage({
+    //   key: 'PWD',
+    //   success: function(res) {
+    //     console.log(res.data)
+    //     that.setData({
+    //       PWD: res.data
+    //     })
+    //   },
+    // });
     // 接口更新，禁止载入时要求授权
     // 查看是否授权
     wx.getSetting({
@@ -145,6 +151,7 @@ Page({
       }
     });
     console.log("load one time")
+    console.log(this.data.SID + "  " + this.data.PWD)
     this._observer = wx.createIntersectionObserver(this)
     this._observer
       .relativeTo('.scroll-main')

@@ -115,17 +115,22 @@ Page({
               }
             })
           } else {
+            app.globalData.SID = that.data.SID
+            app.globalData.PWD = that.data.PWD
+
+            
+
             console.log("SID: " + that.data.SID);
             console.log("PWD: " + that.data.PWD);
 
-            wx.setStorage({
-              key: 'SID',
-              data: that.data.SID,
-            })
-            wx.setStorage({
-              key: 'PWD',
-              data: that.data.PWD,
-            })
+            // wx.setStorage({
+            //   key: 'SID',
+            //   data: that.data.SID,
+            // })
+            // wx.setStorage({
+            //   key: 'PWD',
+            //   data: that.data.PWD,
+            // })
             wx.switchTab({
               url: '../index/index',
             })

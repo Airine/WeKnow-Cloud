@@ -17,6 +17,8 @@ App({
     openid: null,
     avatarUrl: '/src/icon/loginDefault.png',
     logged: false,
+    SID:'',
+    PWD:null
 	}
 
 	  wx.getSystemInfo({
