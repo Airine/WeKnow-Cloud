@@ -89,29 +89,60 @@ Page({
   },
 
   login() {
-    if (this.data.SID && this.data.PWD) {
-      wx.switchTab({
-        url: '../index/index',
+    var that = this;
+    // 判断是否SID和PWD都写了内容
+    if (that.data.SID && that.data.PWD) {
+      wx.request({
+        url: 'https://gpa.citric-acid.com.cn/courses/',
+        method: 'POST',
+        // header: {
+        //   "Content-Type": "application/x-www-form-urlencoded"
+        // },  
+        data: {
+          'username': that.data.SID,
+          'password': that.data.PWD
+        },
+
+        success: function(res) {
+          if (res.statusCode != 200) {
+            wx.showModal({
+              title: 'Wrong Info',
+              content: 'Your SID or PWD may be wrong. Please check your input.',
+              success: function(res) {
+                if (res.confirm) {
+                  console.log("用户确定")
+                }
+              }
+            })
+          } else {
+            console.log("SID: " + that.data.SID);
+            console.log("PWD: " + that.data.PWD);
+
+            wx.setStorage({
+              key: 'SID',
+              data: that.data.SID,
+            })
+            wx.setStorage({
+              key: 'PWD',
+              data: that.data.PWD,
+            })
+            wx.switchTab({
+              url: '../index/index',
+            })
+          }
+        },
       })
-      wx.setStorage({
-        key: 'SID',
-        data: this.data.SID,
-      })
-      wx.setStorage({
-        key: 'PWD',
-        data: this.data.PWD,
-      })
-    }else{
+    } else {
       wx.showModal({
         title: 'Info needed',
         content: 'Please input your SID and PWD',
-        success: function(res){
-          if(res.confirm){
+        success: function(res) {
+          if (res.confirm) {
             console.log("用户点击确定")
           }
         }
       })
-      
+
     }
   },
 

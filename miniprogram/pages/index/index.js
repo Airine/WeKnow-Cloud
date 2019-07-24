@@ -95,6 +95,24 @@ Page({
       }
     });
 
+    wx.getStorage({
+      key: 'SID',
+      success: function(res) {
+        console.log(res.data)
+        that.setData({
+          SID: res.data
+        })
+      },
+    });
+    wx.getStorage({
+      key: 'PWD',
+      success: function(res) {
+        console.log(res.data)
+        that.setData({
+          PWD: res.data
+        })
+      },
+    });
     // 接口更新，禁止载入时要求授权
     // 查看是否授权
     wx.getSetting({
@@ -136,27 +154,7 @@ Page({
           tabTop: res.intersectionRatio > 0
         })
       })
-
-    wx.getStorage({
-      key: 'SID',
-      success: function(res) {
-        console.log(res.data)
-        this.setData({
-          SID: res.data
-        })
-      },
-    })
-    wx.getStorage({
-      key: 'PWD',
-      success: function(res) {
-        console.log(res.data)
-        this.setData({
-          PWD: res.data
-        })
-      },
-    })
   },
-
   tabClick: function(e) {
     var that = this;
     var tempt = this.data.content;
