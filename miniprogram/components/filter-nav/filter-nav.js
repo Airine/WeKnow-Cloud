@@ -36,18 +36,9 @@ Component({
     itemName1: '学期',
     itemName2: 'GPA类型',
     itemName3: '等级',
-    selectBrandId: -1, //选择的品牌ID
-    selectServiceId: -1, //选择的服务ID
-    selectHallTypeId: -1, //选择的特殊厅ID
-    selectRegion: {
-      item: 0,
-      sideList: [], //侧边导航的list
-      list: [], //详情list
-      selectDistrictId: -1, //选择的大区ID
-      selectAreaId: -1, //选择的小区ID
-      selectLineId: -1, //选择的地铁线ID
-      selectStationId: -1 //选择的地铁站ID
-    }
+    selectCategoryId: -1, //选择的品牌ID
+    selectGradeId: -1, //选择的服务ID
+    selectTermId: -1
   },
   created() {
     //自己实现的一个watch。因为不能在外面直接写watch，所以只能定义在这里
@@ -82,18 +73,18 @@ Component({
       })
     },
     //选择品牌的点击事件
-    selectBrand(e) {
-      const brand = e.currentTarget.dataset.brand
-      let brandName = brand.name
-      if (brand.id === -1) {
-        brandName = '品牌'
+    selectCategory(e) {
+      const category = e.currentTarget.dataset.category
+      let categoryName = category.name
+      if (category.id === -1) {
+        categoryName = 'GPA类型'
       }
       this.triggerEvent('change', {
-        brandId: brand.id
+        categoryId: category.id
       })
       this.setData({
-        selectBrandId: brand.id,
-        itemName2: brandName,
+        selectcategoryId: category.id,
+        itemName2: categoryName,
         itemNum: -1
       })
     },

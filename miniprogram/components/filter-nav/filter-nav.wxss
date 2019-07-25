@@ -70,30 +70,30 @@
   color: #777;
 }
 
-/* region */
+/* term */
 
-.region .tab {
+.term .tab {
   border: none;
 }
 
-.region .nav-item {
+.term .nav-item {
   height: 100%;
   line-height: 80rpx;
   box-sizing: border-box;
 }
 
-.region .nav-item.active {
+.term .nav-item.active {
   color: #e54847;
   border-bottom: 2px solid #e54847;
 }
 
-.region-list {
+.term-list {
   display: flex;
   width: 100%;
   height: calc(100% - 80rpx);
 }
 
-.region-sidenav {
+.term-sidenav {
   white-space: nowrap;
   /* 直接用百分比有点问题 */
   width: calc(100vw * 0.4);  
@@ -109,13 +109,13 @@
   background: #f5f5f5;
 }
 
-.region-list-item {
+.term-list-item {
   white-space: nowrap;
   flex-grow: 1;
   height: 100%;
   background: #f5f5f5;
 }
-.region-list-item .item{
+.term-list-item .item{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,15 +124,15 @@
   height: 80rpx;
 }
 
-/* brand */
+/* category */
 
-.brand-scroll-view {
+.category-scroll-view {
   white-space: nowrap;
   width: 100%;
   height: 100%;
 }
 
-.brand-item {
+.category-item {
   display: flex;
   justify-content: space-between;
   line-height: 88rpx;
@@ -147,29 +147,29 @@
 }
 
 
-.brand-count {
+.category-count {
   font-size: 24rpx;
 }
 
-/* special */
+/* grade */
 
-.special-scroll-view {
+.grade-scroll-view {
   white-space: nowrap;
   width: 100%;
   height: calc(100% - 120rpx);
 }
 
-.special .item-title {
+.grade .item-title {
   padding: 20rpx 30rpx;
 }
 
-.special .item-list {
+.grade .item-list {
   display: flex;
   flex-wrap: wrap;
   padding: 0 30rpx;
 }
 
-.special .item-list .btn {
+.grade .item-list .btn {
   width: 21.3%;
   height: 60rpx;
   margin-right: 3%;
@@ -183,13 +183,13 @@
   padding: 0 6rpx;
 }
 
-.special .item-list .btn.select {
+.grade .item-list .btn.select {
   background: #fcf0f0;
   color: #f03d37;
   border: 1px solid #f03d37;
 }
 
-.special-btn {
+.grade-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -204,7 +204,7 @@
   box-sizing: border-box;
 }
 
-.special-btn .btn {
+.grade-btn .btn {
   background: #fff;
   border: 1px solid #e5e5e5;
   height: 68rpx;
@@ -215,7 +215,7 @@
   line-height: 68rpx;
 }
 
-.special-btn .btn.confirm-btn {
+.grade-btn .btn.confirm-btn {
   background: #f03d37;
   border: 1px solid #f03d37;
   color: #fff;

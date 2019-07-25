@@ -16,7 +16,48 @@ Page({
     SID: '',
     PWD: null,
     Term: [],
-
+    CourseInfo: {
+      "Term": {
+        "name": "学期",
+        "subItems": [{
+          "count": 0,
+          "code": "课程编码",
+          "name": "全部"
+        }]
+      },
+      "Category": {
+        "name": "GPA类型",
+        "subItems": [{
+          "count": 1111,
+          "id": -1,
+          "name": "全部"
+        }, {
+          "count": 10,
+          "id": 0,
+          "name": "专业选修"
+        }, {
+          "count": 90,
+          "id": 1,
+          "name": "通识教育"
+        }]
+      },
+      "Level": {
+        "name": "等级",
+        "subItems": [{
+          "count": 100,
+          "id": -1,
+          "name": "全部"
+        }, {
+          "count": 10,
+          "id": 10,
+          "name": "A"
+        }, {
+          "count": 91,
+          "id": 1,
+          "name": "D"
+        }]
+      }
+    },
 
     cityCinemaInfo: {}, //城市影院信息
     isShow: false,
@@ -87,7 +128,29 @@ Page({
 
   },
 
-
+  changeCondition(e) {
+    const obj = e.detail
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    this.setData({
+      params: {
+        ...this.data.params,
+        ...obj
+      },
+      cinemas: [],
+      nothing: false
+    }, () => {
+      this.getCinemas(this.data.params).then((list) => {
+        if (!list.length) {
+          this.setData({
+            nothing: true
+          })
+        }
+        wx.hideLoading()
+      })
+    })
+  },
   toggleShow(e) {
     const item = e.detail.item
     this.setData({
@@ -98,4 +161,9 @@ Page({
   /**
    * 用于切换选取的Term
    */
+
+
+
+
+
 })
