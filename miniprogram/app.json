@@ -10,7 +10,8 @@
     "pages/userConsole/displayFail/displayFail",
     "pages/study/course/course",
     "pages/study/application/application",
-    "pages/searchPage/searchPage"
+    "pages/searchPage/searchPage",
+    "pages/GPACalculator/GPACalculator"
   ],
   "window": {
     "backgroundTextStyle": "light",
