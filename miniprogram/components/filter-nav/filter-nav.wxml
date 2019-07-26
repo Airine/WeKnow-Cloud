@@ -21,31 +21,9 @@
   <view class='nav-content'>
 
 
-    <view class='nav-content-item term' style='display:{{itemNum===1?"block":"none"}}'>
-      <view class='tab'>
-        <view class='nav-item {{selectRegion.item===0 ?"active":""}}' bindtap='selectRegionItem' data-index='{{0}}'>商区</view>
-        <view class='nav-item {{selectRegion.item===1 ?"active":""}}' bindtap='selectRegionItem' data-index='{{1}}'>地铁站</view>
-      </view>
-      <view class='term-list'>
-        <scroll-view class='term-sidenav' scroll-y>
-          <view wx:for='{{selectRegion.sideList}}' wx:key='{{item.id}}' class='line-ellipsis side-item {{selectRegion.item===0?(item.id===selectRegion.selectDistrictId?"active":""):(item.id===selectRegion.selectLineId?"active":"")}}' bindtap='regionSideClick' data-side='{{item}}'>{{item.name}}({{item.count}})</view>
-        </scroll-view>
-        <scroll-view class='term-list-item' scroll-y>
-          <view wx:for='{{selectRegion.list}}' wx:key='{{item.id}}' class='item {{selectRegion.item===0?(item.id===selectRegion.selectAreaId?"red":""):(item.id===selectRegion.selectStationId?"red":"")}}' bindtap='regionListClick' data-item='{{item}}'>
-            <view>
-              <text class='iconfont icon-hook' style='visibility:{{selectRegion.item===0?(item.id===selectRegion.selectAreaId?"":"hidden"):(item.id===selectRegion.selectStationId?"":"hidden")}}'></text> {{item.name}}
-            </view>
-            <view>{{item.count}}</view>
-          </view>
-        </scroll-view>
-      </view>
-    </view>
-
-
-
     <view class='nav-content-item category' style='display:{{itemNum===2?"block":"none"}}'>
       <scroll-view class='category-scroll-view' scroll-y>
-        <view wx:for='{{cityCinemaInfo.Category.subItems}}' wx:key='{{item.id}}' class='category-item {{selectBrandId===item.id?"red":""}}' bindtap='selectBrand' data-brand='{{item}}'>
+        <view wx:for='{{cityCinemaInfo.Category.subItems}}' wx:key='{{item.id}}' class='category-item {{selectBrandId===item.id?"red":""}}' bindtap='selectCategory' data-brand='{{item}}'>
           <view>
             <text class='iconfont icon-hook' style='visibility:{{selectBrandId===item.id?"":"hidden"}}'></text> {{item.name}}
           </view>
@@ -55,26 +33,5 @@
     </view>
 
 
-
-
-    <view class='nav-content-item grade' style='display:{{itemNum===3?"block":"none"}}'>
-      <scroll-view class='grade-scroll-view' scroll-y>
-        <view class='item-title'>特色功能</view>
-        <view class='item-list'>
-          <view wx:for='{{cityCinemaInfo.grade.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectServiceId===item.id?"select":""}}' bindtap='specialSelectItem' data-type-id='{{item.id}}' data-type='service'>{{item.name}}</view>
-        </view>
-        <view class='item-title'>特殊厅</view>
-        <view class='item-list'>
-          <view wx:for='{{cityCinemaInfo.hallType.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectHallTypeId===item.id?"select":""}}' bindtap='specialSelectItem' data-type-id='{{item.id}}' data-type='hallType'>{{item.name}}</view>
-        </view>
-      </scroll-view>
-      <view class='grade-btn'>
-        <view class='btn' bindtap='specialReset'>重置</view>
-        <view class='btn confirm-btn' bindtap='specialConfirm'>确定</view>
-      </view>
-    </view>
-
-
   </view>
-  <view class='mask' bindtap='cancal' style='display:{{itemNum===-1?"none":"block"}}' catchtap='cancal'></view>
 </view>
