@@ -4,7 +4,7 @@
 </view>
 <view class="body">
   <view class='nav-wrapper magin-top'>
-    <filter-nav city-cinema-info='{{CourseInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow'></filter-nav>
+    <filter-nav CourseInfo='{{CourseInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow'></filter-nav>
     <view>TEST</view>
   </view>
 

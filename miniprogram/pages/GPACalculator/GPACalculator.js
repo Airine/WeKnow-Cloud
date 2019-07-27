@@ -15,14 +15,17 @@ Page({
     WindowW: app.globalData.WindowW,
     SID: '',
     PWD: null,
-    Term: [],
     CourseInfo: {
       "Term": {
         "name": "学期",
         "subItems": [{
           "count": 0,
-          "code": "课程编码",
+          "id": -1,
           "name": "全部"
+        }, {
+          "count": 100,
+          "id": 0,
+          "name": "2018-2019-2"
         }]
       },
       "Category": {
@@ -76,7 +79,8 @@ Page({
 
     console.log(app.globalData.SID)
     console.log(app.globalData.PWD)
-    console.log(app.globalData.Term)
+
+    console.log(this.data.CourseInfo.Category.subItems)
   },
 
   /**

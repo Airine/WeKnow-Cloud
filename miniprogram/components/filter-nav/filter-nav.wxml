@@ -19,19 +19,43 @@
 
 
   <view class='nav-content'>
-
-
-    <view class='nav-content-item category' style='display:{{itemNum===2?"block":"none"}}'>
-      <scroll-view class='category-scroll-view' scroll-y>
-        <view wx:for='{{cityCinemaInfo.Category.subItems}}' wx:key='{{item.id}}' class='category-item {{selectBrandId===item.id?"red":""}}' bindtap='selectCategory' data-brand='{{item}}'>
+    <view class='nav-content-item term' style='display:{{itemNum===1?"block":"none"}}'>
+      <scroll-view class='scroll-view' scroll-y>
+        <view wx:for='{{CourseInfo.Term.subItems}}' wx:key='{{item.id}}' class='category-term-item {{selectTermId===item.id?"red":""}}' bindtap='selectTerm' data-category='{{item}}'>
           <view>
-            <text class='iconfont icon-hook' style='visibility:{{selectBrandId===item.id?"":"hidden"}}'></text> {{item.name}}
+            <text class='iconfont icon-hook' style='visibility:{{selectTermId===item.id?"":"hidden"}}'></text> {{item.name}}
           </view>
-          <view class='category-count'>{{item.count}}</view>
+          <view class='category-term-count'>{{item.count}}</view>
         </view>
       </scroll-view>
     </view>
 
 
+
+    <view class='nav-content-item category' style='display:{{itemNum===2?"block":"none"}}'>
+      <scroll-view class='scroll-view' scroll-y>
+        <view wx:for='{{CourseInfo.Category.subItems}}' wx:key='{{item.id}}' class='category-term-item {{selectCateId===item.id?"red":""}}' bindtap='selectCategory' data-category='{{item}}'>
+          <view>
+            <text class='iconfont icon-hook' style='visibility:{{selectCateId===item.id?"":"hidden"}}'></text> {{item.name}}
+          </view>
+          <view class='category-term-count'>{{item.count}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+
+
+    <view class='nav-content-item grade' style='display:{{itemNum===3?"block":"none"}}'>
+      <scroll-view class='grade-scroll-view' scroll-y>
+        <view class='item-title'>特色功能</view>
+        <view class='item-list'>
+          <view wx:for='{{CourseInfo.Level.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectGradeId===item.id?"select":""}}' bindtap='gradeSelectItem' data-type-id='{{item.id}}' data-type='service'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class='grade-btn'>
+        <view class='btn' bindtap='eeset'>重置</view>
+        <view class='btn confirm-btn' bindtap='confirm'>确定</view>
+      </view>
+    </view>
   </view>
 </view>
