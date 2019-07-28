@@ -44,7 +44,8 @@ App({
             "name": "全部"
           }]
         }
-      }
+      },
+      CourseArray: [],
     }
 
     wx.getSystemInfo({

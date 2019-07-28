@@ -2,22 +2,17 @@
   <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
   </view>
 </view>
-<view class="body">
-  <view class='nav-wrapper magin-top'>
-  <!-- 注意这里的bindchange可能要做修改 -->
+<view class='body' style='position:{{isShow?"fixed":""}}'>
+  <view class='nav-wrapper' style='position:fixed'>
+    <!-- 注意这里的bindchange可能要做修改 -->
     <filter-nav CourseInfo='{{CourseInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow'></filter-nav>
-    <view>TEST</view>
   </view>
 
-  <!-- <view class="cu-form-group magin-top">
-    <view class="title">Please select your term</view>
-    <picker bindtap="TermChange" value="{{index}}" range="{{Term}}">
-      <view class="picker">
-        {{index?Term[index]:'请选择想要的学期'}}
-      </view>
-    </picker>
-  </view> -->
-
-  <!--miniprogram/pages/GPACalculator/GPACalculator.wxml-->
-  <text>miniprogram/pages/GPACalculator/GPACalculator.wxml</text>
+  <view class="course-list">
+    <view class="cu-form-group" wx:for="{{CourseArray}}" wx:key="code">
+      <view class="courseTitle">{{item.name}}</view>
+      <view class="gradeTitle">{{item.grade}}</view>
+      <checkbox class="round" checked></checkbox>
+    </view>
+  </view>
 </view>

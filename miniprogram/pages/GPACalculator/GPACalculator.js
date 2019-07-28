@@ -15,9 +15,10 @@ Page({
     WindowW: app.globalData.WindowW,
     SID: '',
     PWD: null,
-    CourseInfo:{},
+    CourseInfo: {},
+    CourseArray: [],
+    GPA: 0,
 
-    cityCinemaInfo: {}, //城市影院信息
     isShow: false,
 
   },
@@ -29,12 +30,14 @@ Page({
     this.setData({
       SID: app.globalData.SID,
       PWD: app.globalData.PWD,
-      CourseInfo : app.globalData.CourseInfo
+      CourseInfo: app.globalData.CourseInfo,
+      CourseArray: app.globalData.CourseArray,
     })
 
     console.log(app.globalData.SID)
     console.log(app.globalData.PWD)
     console.log(app.globalData.CourseInfo)
+    console.log(app.globalData.CourseArray)
 
   },
 
@@ -118,9 +121,41 @@ Page({
   },
 
   /**
-   * 用于切换选取的Term
+   * 用于计算GPA的方法
    */
+  GPA: function() {
+    var that = this
+    var totalPoint = 0 // 分母
+    var dividend = 0 // 分子
+    var CouseArray = that.data.CourseArray
+    var map = new Map()
+    map.set("A+", 4.00)
+    map.set("A", 3.94)
+    map.set("A-", 3.85)
+    map.set("B+", 3.73)
+    map.set("B", 3.55)
+    map.set("B-", 3.32)
+    mao.set("C+", 3.09)
+    map.set("C", 2.78)
+    map.set("C-", 2.42)
+    map.set("D+", 2.08)
+    map.set("D", 1.63)
+    map.set("D-", 1.15)
+    map.set("F", 0.00)
+    for (var index = 0; index < CourseArray.length; index++) {
+      if (CourseArray[index].grade === "P")
+        continue
+      else {
+        totalPoint += CourseArray[index].point
+        dividend += CouseArray[index].point * map.get(CouseArray[index].grade)
+      }
+    }
+    that.setData({
+      GPA: dividend / totalPoint
+    })
 
+    console.log(this.data.GPA)
+  }
 
 
 

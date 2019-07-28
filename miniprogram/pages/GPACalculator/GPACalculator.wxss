@@ -1,14 +1,39 @@
-/* miniprogram/pages/GPACalculator/GPACalculator.wxss */
-.nav-wrapper {
+.body .nav-wrapper {
   position: fixed;
   z-index: 10;
   left: 0;
   width: 100vw;
   height: 80rpx;
   background: #fff;
-  /* padding: 1rpx 30rpx; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* min-height: 100rpx; */
-  /* justify-content: space-between; */
+}
+
+.body .course-list {
+  position: relative;
+  top: 80rpx;
+}
+
+.cu-form-group .gradeTitle {
+  text-align: center;
+  padding-right: 30rpx;
+  font-size: 30rpx;
+  position: relative;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 50rpx;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
+}
+
+.cu-form-group .courseTitle {
+  text-align: left;
+  padding-right: 30rpx;
+  font-size: 30rpx;
+  position: relative;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 500rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

@@ -223,6 +223,7 @@ Page({
             that.data.CourseInfo.Level.subItems[0].count = originData.length
 
             app.globalData.CourseInfo = that.data.CourseInfo
+            app.globalData.CourseArray = originData
 
             // console.log(termMap)
             // console.log(cateMap)

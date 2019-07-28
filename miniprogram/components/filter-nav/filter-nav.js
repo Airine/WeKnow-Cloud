@@ -9,6 +9,7 @@ Component({
       type: Object,
       value: {},
       // 监听器，实时更新数据
+      // 报错： VM2617:1 Setting data field "selectTerm" to undefined is invalid
       observer: function(newVal, oldVal, changedPath) {
         // const sideList = newVal.district ? newVal.district.subItems : [];
         this.setData({
