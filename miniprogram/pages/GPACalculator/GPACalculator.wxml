@@ -4,6 +4,7 @@
 </view>
 <view class="body">
   <view class='nav-wrapper magin-top'>
+  <!-- 注意这里的bindchange可能要做修改 -->
     <filter-nav CourseInfo='{{CourseInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow'></filter-nav>
     <view>TEST</view>
   </view>

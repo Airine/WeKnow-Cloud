@@ -15,52 +15,7 @@ Page({
     WindowW: app.globalData.WindowW,
     SID: '',
     PWD: null,
-    CourseInfo: {
-      "Term": {
-        "name": "学期",
-        "subItems": [{
-          "count": 0,
-          "id": -1,
-          "name": "全部"
-        }, {
-          "count": 100,
-          "id": 0,
-          "name": "2018-2019-2"
-        }]
-      },
-      "Category": {
-        "name": "GPA类型",
-        "subItems": [{
-          "count": 1111,
-          "id": -1,
-          "name": "全部"
-        }, {
-          "count": 10,
-          "id": 0,
-          "name": "专业选修"
-        }, {
-          "count": 90,
-          "id": 1,
-          "name": "通识教育"
-        }]
-      },
-      "Level": {
-        "name": "等级",
-        "subItems": [{
-          "count": 100,
-          "id": -1,
-          "name": "全部"
-        }, {
-          "count": 10,
-          "id": 10,
-          "name": "A"
-        }, {
-          "count": 91,
-          "id": 1,
-          "name": "D"
-        }]
-      }
-    },
+    CourseInfo:{},
 
     cityCinemaInfo: {}, //城市影院信息
     isShow: false,
@@ -74,13 +29,13 @@ Page({
     this.setData({
       SID: app.globalData.SID,
       PWD: app.globalData.PWD,
-      Term: app.globalData.Term
+      CourseInfo : app.globalData.CourseInfo
     })
 
     console.log(app.globalData.SID)
     console.log(app.globalData.PWD)
+    console.log(app.globalData.CourseInfo)
 
-    console.log(this.data.CourseInfo.Category.subItems)
   },
 
   /**
