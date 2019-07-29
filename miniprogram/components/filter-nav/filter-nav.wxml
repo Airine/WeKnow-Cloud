@@ -51,10 +51,6 @@
           <view wx:for='{{CourseInfo.Level.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectGradeId===item.id?"select":""}}' bindtap='gradeSelectItem' data-grade='{{item}}'>{{item.name}}</view>
         </view>
       </scroll-view>
-      <view class='grade-btn'>
-        <view class='btn' bindtap='eeset'>重置</view>
-        <view class='btn confirm-btn' bindtap='confirm'>确定</view>
-      </view>
     </view>
   </view>
   <view class='mask' bindtap='cancal' style='display:{{itemNum===-1?"none":"block"}}' catchtap='cancal'></view>

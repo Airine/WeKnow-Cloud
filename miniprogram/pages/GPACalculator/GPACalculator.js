@@ -44,7 +44,7 @@ Page({
 
     // console.log(app.globalData.SID)
     // console.log(app.globalData.PWD)
-    // console.log(app.globalData.CourseInfo)
+    console.log(app.globalData.CourseInfo)
     // console.log(app.globalData.CourseArray)
   },
 
@@ -168,7 +168,7 @@ Page({
 
   changeCondition(e) {
     const obj = e.detail
-
+    const that = this
     // console.log(obj)
     wx.showLoading({
       title: '正在加载...'
@@ -178,18 +178,25 @@ Page({
           ...this.data.params,
           ...obj
         },
-        CourseArray: []
+        nothing: false
       }, () => {
-        this.getCourses(this.data.params).then((list) => {
-          if (!list.length) {
-            this.setData({
-              nothing: true
-            })
-          }
-        })
+        this.getCourses(this.data.params)
+        if (that.data.CourseArray.length === 0) {
+          that.setData({
+            nothing: true
+          })
+        } else {
+          console.log(that.data.CourseArray)
+        }
+        // if (!list.length) {
+        //   this.setData({
+        //     nothing: true
+        //   })
+        // }
       }),
       // console.log(this.data.CourseArray)
-    wx.hideLoading()
+      wx.hideLoading()
+
   },
 
   /**

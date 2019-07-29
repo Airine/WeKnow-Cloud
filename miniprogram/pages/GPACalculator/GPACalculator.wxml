@@ -14,7 +14,7 @@
     </view>
 
     <view class="GPA-show">
-      <view class="GPA-num">{{GPA}}</view>
+      <view hidden="{{nothing}}" class="GPA-num">{{GPA}}</view>
     </view>
 
     <view class="course-list">
@@ -23,6 +23,12 @@
         <view class="gradeTitle">{{item.course.grade}}</view>
         <checkbox class="round" wx:if="{{item.show}}" checked bindtap="tap" data-coursedetail='{{item}}'></checkbox>
         <checkbox class="round" wx:else unchecked bindtap="tap" data-coursedetail='{{item}}'></checkbox>
+      </view>
+    </view>
+    <view hidden="{{!nothing}}">
+      <view class='nothing'>
+        <image src='/assets/images/nothing.png' class='nothing-img'></image>
+        <view class='nothing-text'>暂无符合条件的课程</view>
       </view>
     </view>
   </view>

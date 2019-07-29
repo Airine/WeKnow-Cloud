@@ -69,7 +69,7 @@
 .nav-content-item {
   position: relative;
   width: 100vw;
-  height: calc(100vh * 0.6);
+  height: calc(100vh * 0.4);
   background: #fff;
   color: #777;
 }

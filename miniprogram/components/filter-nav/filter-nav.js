@@ -118,12 +118,6 @@ Component({
       })
     },
 
-    // 分数一栏的重置事件
-    reset(e) {},
-
-    // 分数一栏的确定事件
-    confirm(e) {},
-
     // 蒙板的点击事件
     cancal() {
       this.setData({
