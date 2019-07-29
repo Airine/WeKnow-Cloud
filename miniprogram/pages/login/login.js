@@ -157,7 +157,7 @@ Page({
 
             var originData = that.data.originData
 
-            // 先处理完Category的分类再去重
+            // 先处理完Category的分类和count之后再去重
             for (var index = 0; index < originData.length; index++) {
               if (cateMap.has(originData[index].category)) {
                 cateMap.set(originData[index].category, cateMap.get(originData[index].category) + 1)
@@ -165,6 +165,9 @@ Page({
                 cateMap.set(originData[index].category, 1)
               }
             }
+
+
+
 
             // 去重
             var courseSet = new Set()
@@ -209,14 +212,32 @@ Page({
                 "name": key
               })
             }
-            mapIndex = 1
+
+            // 更新等级部分的数量，顺便排个序
+            var gradeArray = []
             for (var [key, value] of gradMap) {
-              that.data.CourseInfo.Level.subItems.push({
+              gradeArray.push({
                 "count": value,
-                "id": mapIndex++,
+                "id": 0,
                 "name": key
               })
             }
+            gradeArray.sort(
+              function(obj1, obj2) {
+                if (obj1.name > obj2.name)
+                  return 1
+                else if (obj1.name == obj2.name)
+                  return 0
+                else
+                  return -1
+              })
+            for(var index = 0; index < gradeArray.length; index++){
+              gradeArray[index].id = index + 1
+              that.data.CourseInfo.Level.subItems.push(gradeArray[index])
+            }
+
+
+
 
             that.data.CourseInfo.Term.subItems[0].count = originData.length
             that.data.CourseInfo.Category.subItems[0].count = originData.length
@@ -224,31 +245,8 @@ Page({
 
             app.globalData.CourseInfo = that.data.CourseInfo
             app.globalData.CourseArray = originData
-
-            // console.log(termMap)
-            // console.log(cateMap)
-            // console.log(gradMap)
-
-            console.log(that.data.CourseInfo)
-
-
-
-            console.log("SID: " + that.data.SID);
-            console.log("PWD: " + that.data.PWD);
-
-            // wx.setStorage({
-            //   key: 'SID',
-            //   data: that.data.SID,
-            // })
-            // wx.setStorage({
-            //   key: 'PWD',
-            //   data: that.data.PWD,
-            // })
-            // wx.switchTab({
-            //   url: '../index/index',
-            // })
-            wx.redirectTo({
-              url: '../GPACalculator/GPACalculator',
+            wx.switchTab({
+              url: '../index/index',
             })
           }
         },
@@ -277,5 +275,12 @@ Page({
     this.setData({
       PWD: e.detail.value
     })
+  },
+  compare: function(property) {
+    return function(obj1, obj2) {
+      var value1 = obj1[property];
+      var value2 = obj2[property];
+      return value1 - value2; // 升序
+    }
   }
 })

@@ -1,3 +1,7 @@
+.body {
+  background-color: #fff;
+}
+
 .body .nav-wrapper {
   position: fixed;
   z-index: 10;
@@ -9,7 +13,7 @@
 
 .body .course-list {
   position: relative;
-  top: 80rpx;
+  top: 120rpx;
 }
 
 .cu-form-group .gradeTitle {
@@ -21,8 +25,7 @@
   line-height: 60rpx;
   width: 50rpx;
   overflow: hidden;
-  /* white-space: nowrap; */
-  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; *//* text-overflow: ellipsis; */
 }
 
 .cu-form-group .courseTitle {
@@ -36,4 +39,24 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.GPA-show {
+  position: relative;
+  top: 40rpx;
+  height: 100rpx;
+}
+
+.GPA-show .GPA-num {
+  text-align: center;
+  padding-right: 30rpx;
+  font-size: 100rpx;
+  position: relative;
+  top: 50rpx;
+  color: rgb(59, 185, 0);
+  background-color: #fff
+}
+
+.content{
+  background-color: #fff
 }
