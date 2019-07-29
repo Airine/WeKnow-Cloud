@@ -86,8 +86,8 @@
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/Airine"><img src="https://avatars2.githubusercontent.com/u/21023948?v=4" width="100px;" alt="Aaron"/><br /><sub><b>Aaron</b></sub></a><br /><a href="https://github.com/Airine/WeKnow-Cloud/commits?author=Airine" title="Code">💻</a></td></tr>
-<tr><td align="center"><a href="https://github.com/Isaac-Graham"><img src="https://avatars2.githubusercontent.com/u/45254932?s=400&v=4" width="100px;" alt="Isc-"/><br /><sub><b>Aaron</b></sub></a><br /><a href="https://github.com/Airine/WeKnow-Cloud/commits?author=Isaac-Graham" title="Code">💻</a></td></tr>
+<table><tr><td align="center"><a href="https://github.com/Airine"><img src="https://avatars2.githubusercontent.com/u/21023948?v=4" width="100px;" alt="Aaron"/><br /><sub><b>Aaron</b></sub></a><br /><a href="https://github.com/Airine/WeKnow-Cloud/commits?author=Airine" title="Code">💻</a></td>
+   <td align="center"><a href="https://github.com/Isaac-Graham"><img src="https://avatars2.githubusercontent.com/u/45254932?s=400&v=4" width="100px;" alt="Isc-"/><br /><sub><b>Isc</b></sub></a><br /><a href="https://github.com/Airine/WeKnow-Cloud/commits?author=Isaac-Graham" title="Code">💻</a></td></tr>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
