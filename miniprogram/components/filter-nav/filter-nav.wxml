@@ -1,0 +1,57 @@
+<view class='nav'>
+
+
+  <view class='tab'>
+    <view class='nav-item {{itemNum===1?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{1}}'>
+      <text class='title line-ellipsis'>{{itemName1}}</text>
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='nav-item have-border {{itemNum===2?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{2}}'>
+      <text class='title line-ellipsis'>{{itemName2}}</text>
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='nav-item {{itemNum===3?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{3}}'>
+      <text class='title line-ellipsis'>{{itemName3}}</text>
+      <text class='city-entry-arrow'></text>
+    </view>
+  </view>
+
+
+
+  <view class='nav-content'>
+    <view class='nav-content-item term' style='display:{{itemNum===1?"block":"none"}}'>
+      <scroll-view class='scroll-view' scroll-y>
+        <view wx:for='{{CourseInfo.Term.subItems}}' wx:key='{{item.id}}' class='category-term-item {{selectTermId===item.id?"red":""}}' bindtap='selectTerm' data-term='{{item}}'>
+          <view>
+            <text class='iconfont icon-hook' style='visibility:{{selectTermId===item.id?"":"hidden"}}'></text> {{item.name}}
+          </view>
+          <view class='category-term-count'>{{item.count}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+
+
+    <view class='nav-content-item category' style='display:{{itemNum===2?"block":"none"}}'>
+      <scroll-view class='scroll-view' scroll-y>
+        <view wx:for='{{CourseInfo.Category.subItems}}' wx:key='{{item.id}}' class='category-term-item {{selectCateId===item.id?"red":""}}' bindtap='selectCategory' data-category='{{item}}'>
+          <view>
+            <text class='iconfont icon-hook' style='visibility:{{selectCateId===item.id?"":"hidden"}}'></text> {{item.name}}
+          </view>
+          <view class='category-term-count'>{{item.count}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+
+
+    <view class='nav-content-item grade' style='display:{{itemNum===3?"block":"none"}}'>
+      <scroll-view class='grade-scroll-view' scroll-y>
+        <view class='item-list'>
+          <view wx:for='{{CourseInfo.Level.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectGradeId===item.id?"select":""}}' bindtap='gradeSelectItem' data-grade='{{item}}'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='mask' bindtap='cancal' style='display:{{itemNum===-1?"none":"block"}}' catchtap='cancal'></view>
+</view>

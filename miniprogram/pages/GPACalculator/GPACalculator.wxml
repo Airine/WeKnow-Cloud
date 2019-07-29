@@ -1,0 +1,35 @@
+<view class="content">
+  <view class="cu-custom" style="height:{{CustomBar}}px;">
+    <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+      <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+        <text class='icon-back text-black'></text>
+        <text class='text-black'>返回</text>
+      </navigator>
+    </view>
+  </view>
+  <view class='body' style='position:{{isShow?"fixed":""}}'>
+    <view class='nav-wrapper' style='position:fixed'>
+      <!-- 注意这里的bindchange可能要做修改 -->
+      <filter-nav CourseInfo='{{CourseInfo}}' bindchange='changeCondition'></filter-nav>
+    </view>
+
+    <view class="GPA-show">
+      <view hidden="{{nothing}}" class="GPA-num">{{GPA}}</view>
+    </view>
+
+    <view class="course-list">
+      <view class="cu-form-group" wx:for="{{CourseArray}}" wx:key="code">
+        <view class="courseTitle">{{item.course.name}}</view>
+        <view class="gradeTitle">{{item.course.grade}}</view>
+        <checkbox class="round" wx:if="{{item.show}}" checked bindtap="tap" data-coursedetail='{{item}}'></checkbox>
+        <checkbox class="round" wx:else unchecked bindtap="tap" data-coursedetail='{{item}}'></checkbox>
+      </view>
+    </view>
+    <view hidden="{{!nothing}}">
+      <view class='nothing'>
+        <image src='/assets/images/nothing.png' class='nothing-img'></image>
+        <view class='nothing-text'>暂无符合条件的课程</view>
+      </view>
+    </view>
+  </view>
+</view>
