@@ -72,6 +72,17 @@
         <text class="text-grey">GitHub</text>
       </view>
     </view>
+    <view class="cu-item arrow">
+      <!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
+      <view class="content" bindtap="clearData">
+        <text class="cuIcon-delete text-grey"></text>
+        <text class="text-grey">清空数据</text>
+        <text class="txt_r {{currentSize>=90?'red':'green'}}">
+        <block wx:if="{{currentSize==0}}" style>内存充足</block>
+        <block wx:else>内存约已占用：{{currentSize}}%</block>
+      </text>
+      </view>
+    </view>
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>

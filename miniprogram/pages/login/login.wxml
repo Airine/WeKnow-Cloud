@@ -20,6 +20,10 @@
       </view>
     </view>
   </form>
+  <view class="cu-form-group margin-top" style="margin: 20rpx 40rpx 20rpx 40rpx ">
+		<view class="title">Store the SID and PWD locally</view>
+		<switch class="yellow sm"  checked bindtap="selected"></switch>
+	</view>
   <view class="padding flex flex-direction">
     <button class="cu-btn bg-yellow lg" bindtap='login'>Login</button>
   </view>

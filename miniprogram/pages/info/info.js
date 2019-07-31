@@ -13,12 +13,15 @@ Page({
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
+    // 计算目前资源占用
+    currentSize: 0,
   },
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
   onLoad: function (options) {
+    const that = this
     // 登录
     wx.login({
       success: res => {
@@ -63,6 +66,15 @@ Page({
         }
       }
     })
+
+    // 计算目前资源占用
+    wx.getStorageInfo({
+      success: function (res) {
+        that.setData({
+          currentSize: (Math.floor(res.currentSize / res.limitSize * 10000) / 100)
+        });
+      }
+    });
   },
 
 	/**
@@ -159,4 +171,22 @@ Page({
   /**
    * 弹窗模块
    */
+
+
+  /**清除数据 */
+  clearData() {
+    const that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定清空所有的备忘数据？数据一旦清空，将无法恢复！且下次登录需要自己输入密码',
+      success: function (res) {
+        if (res.confirm) {
+          wx.clearStorageSync();
+          that.setData({
+            currentSize: 0
+          });
+        };
+      }
+    });
+  },
 })

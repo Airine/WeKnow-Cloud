@@ -10,9 +10,6 @@ Page({
    * Page initial data
    */
   data: {
-    // 内容
-    value: '',
-    result: {},
     // 显示相关
     fixedH: 114,
     fixedPercent: 85,
@@ -22,7 +19,6 @@ Page({
     WindowW: app.globalData.WindowW,
     SID: '',
     PWD: null,
-    originData: [], // url返回的数组数据，要做修改改成CourseInfo的形式
     CourseInfo: {
       "Term": {
         "name": "学期",
@@ -48,13 +44,19 @@ Page({
           "name": "全部"
         }]
       }
-    }
+    },
+    store: true
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
+    // wx.clearStorageSync(); 
+
+
+
+    // wx.getStorageInfoSync(user)
     // var that = this;
     // var fixedHH = app.globalData.WindowW * 50 / 375 + app.globalData.CustomBar;
     // var percent = parseInt(100 - 100 * fixedHH / app.globalData.WindowH, 10);
@@ -142,112 +144,22 @@ Page({
               }
             })
           } else {
+            console.log(res.data)
             app.globalData.SID = that.data.SID
             app.globalData.PWD = that.data.PWD
-            that.setData({
-              originData: res.data
-            })
 
-
-
-            // 这三个Map是用来给三种类型count
-            var termMap = new Map()
-            var cateMap = new Map()
-            var gradMap = new Map()
-
-            var originData = that.data.originData
-
-            // 先处理完Category的分类和count之后再去重
-            for (var index = 0; index < originData.length; index++) {
-              if (cateMap.has(originData[index].category)) {
-                cateMap.set(originData[index].category, cateMap.get(originData[index].category) + 1)
-              } else {
-                cateMap.set(originData[index].category, 1)
-              }
-            }
-
-
-
-
-            // 去重
-            var courseSet = new Set()
-            for (var index = 0; index < originData.length; index++) {
-              if (courseSet.has(originData[index].code)) {
-                originData.splice(index, 1)
-              } else {
-                courseSet.add(originData[index].code)
-              }
-            }
-
-
-            // 处理完category之后处理term和grade
-            for (var index = 0; index < originData.length; index++) {
-              if (termMap.has(originData[index].term)) {
-                termMap.set(originData[index].term, termMap.get(originData[index].term) + 1)
-              } else {
-                termMap.set(originData[index].term, 1)
-              }
-
-              if (gradMap.has(originData[index].grade)) {
-                gradMap.set(originData[index].grade, gradMap.get(originData[index].grade) + 1)
-              } else {
-                gradMap.set(originData[index].grade, 1)
-              }
-            }
-
-            // 更新CourseInfo
-            var mapIndex = 1
-            for (var [key, value] of termMap) {
-              that.data.CourseInfo.Term.subItems.push({
-                "count": value,
-                "id": mapIndex++,
-                "name": key
-              })
-            }
-            mapIndex = 1
-            for (var [key, value] of cateMap) {
-              that.data.CourseInfo.Category.subItems.push({
-                "count": value,
-                "id": mapIndex++,
-                "name": key
+            // 在本地保存login info，免去以后的登录之苦
+            if (that.data.store) {
+              wx.setStorage({
+                key: 'loginInfo',
+                data: {
+                  "SID": that.data.SID,
+                  "PWD": that.data.PWD
+                },
               })
             }
 
-            // 更新等级部分的数量，顺便排个序
-            var gradeArray = []
-            for (var [key, value] of gradMap) {
-              gradeArray.push({
-                "count": value,
-                "id": 0,
-                "name": key
-              })
-            }
-            gradeArray.sort(
-              function(obj1, obj2) {
-                if (obj1.name > obj2.name)
-                  return 1
-                else if (obj1.name == obj2.name)
-                  return 0
-                else
-                  return -1
-              })
-            for(var index = 0; index < gradeArray.length; index++){
-              gradeArray[index].id = index + 1
-              that.data.CourseInfo.Level.subItems.push(gradeArray[index])
-            }
-
-
-
-
-            that.data.CourseInfo.Term.subItems[0].count = originData.length
-            that.data.CourseInfo.Category.subItems[0].count = originData.length
-            that.data.CourseInfo.Level.subItems[0].count = originData.length
-
-            app.globalData.CourseInfo = that.data.CourseInfo
-            app.globalData.CourseArray = originData
-            wx.switchTab({
-              url: '../index/index',
-            })
+            app.getCourseArray_Info(res.data)
           }
         },
       })
@@ -276,11 +188,20 @@ Page({
       PWD: e.detail.value
     })
   },
+
   compare: function(property) {
     return function(obj1, obj2) {
       var value1 = obj1[property];
       var value2 = obj2[property];
       return value1 - value2; // 升序
     }
+  },
+
+  // store的选择
+  selected: function (e) {
+    this.setData({
+      store: !this.data.store
+    })
+    console.log(this.data.store)
   }
 })

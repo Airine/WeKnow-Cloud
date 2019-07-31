@@ -247,7 +247,7 @@ Page({
   /**
    * 点击按钮来决定是否选中该课程以计算GPA
    */
-  tap: function(e) {
+  selected: function(e) {
     const that = this
     const code = e.currentTarget.dataset.coursedetail.course.code
     var CourseArray = that.data.CourseArray

@@ -72,3 +72,15 @@ map,.mapBox{
 	height: 142rpx;
 	font-size: 3em;
 }
+
+.txt_r{
+  float: right;
+  font-size: 24rpx;
+}
+
+.green{
+  color:#1AAD16;
+}
+.red{
+  color:red;
+}

@@ -140,6 +140,7 @@ Page({
               avatarUrl: res.userInfo.avatarUrl,
               userInfo: res.userInfo,
             });
+            console.log(res)
             // console.log('userInfo', res.userInfo)
             app.globalData.avatarUrl = res.userInfo.avatarUrl;
             app.globalData.userInfo = res.userInfo;
