@@ -22,7 +22,7 @@
         <view class="courseTitle">{{item.course.name}}</view>
         <view class="gradeTitle">{{item.course.grade}}</view>
         <checkbox class="round" wx:if="{{item.show}}" checked bindtap="selected" data-coursedetail='{{item}}'></checkbox>
-        <checkbox class="round" wx:else unchecked bindtap="tap" data-coursedetail='{{item}}'></checkbox>
+        <checkbox class="round" wx:else unchecked bindtap="selected" data-coursedetail='{{item}}'></checkbox>
       </view>
     </view>
     <view hidden="{{!nothing}}">
