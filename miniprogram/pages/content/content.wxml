@@ -6,6 +6,6 @@
     </navigator>
   </view>
 </view>
-<view class="page markdown">
+<view class="page markdown" style="background-color:#fff">
 	<wemark md="{{markdown}}" link highlight type="wemark"></wemark>
 </view>
