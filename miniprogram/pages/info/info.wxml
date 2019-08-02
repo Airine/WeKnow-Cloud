@@ -13,7 +13,7 @@
   </view>
 
   <!-- 数字组件 -->
-  <view class="padding flex text-center text-grey bg-white shadow-warp">
+  <!-- <view class="padding flex text-center text-grey bg-white shadow-warp">
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-orange">{{visitTotal}}</view>
       <view class="margin-top-sm">
@@ -29,49 +29,73 @@
       <view class="margin-top-sm">
         <text class="cuIcon-fork"></text> Fork</view>
     </view>
-  </view>
+  </view> -->
 
   <!-- 选单 -->
+
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about" hover-class="none">
         <image src="/src/icon/logoDefault.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">个人设置</text>
       </navigator>
-    </view>
+    </view> -->
+    <navigator class="cu-item arrow" url="../GPACalculator/GPACalculator">
+      <view class="content">
+        <text class="cuIcon-read text-grey"></text>
+        <text class="text-grey">我的GPA</text>
+      </view>
+      <!-- </navigator> -->
+    </navigator>
 
     <view class="cu-item arrow">
+      <navigator class="content">
+        <text class="cuIcon-deliver text-red"></text>
+        <text class="text-grey">南科大校巴</text>
+      </navigator>
+    </view>
+
+
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about" hover-class="none">
         <text class="cuIcon-formfill text-green"></text>
         <text class="text-grey">历史记录</text>
       </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <!-- bindtap="showQrcode" -->
+    </view> -->
+
+    
+    <!-- <view class="cu-item arrow">
+      bindtap="showQrcode"
       <view class="content">
         <text class="cuIcon-appreciatefill text-red"></text>
         <text class="text-grey">赞赏支持</text>
       </view>
-    </view>
-    <view class="cu-item arrow">
+    </view> -->
+
+
+    <!-- <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">意见反馈</text>
       </button>
-    </view>
-    <view class="cu-item arrow">
+    </view> -->
+
+
+    <!-- <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about" hover-class="none">
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">Bug测试</text>
       </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
+    </view> -->
+
+
+    <!-- <view class="cu-item arrow">
+      bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI"
       <view class="content">
         <text class="cuIcon-github text-grey"></text>
         <text class="text-grey">GitHub</text>
       </view>
-    </view>
+    </view> -->
     <view class="cu-item arrow">
       <!-- bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI" -->
       <view class="content" bindtap="clearData">
@@ -83,6 +107,13 @@
       </text>
       </view>
     </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/about" hover-class="none">
+        <text class="cuIcon-mail text-orange"></text>
+        <text class="text-grey">联系我们</text>
+      </navigator>
+    </view>
+
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>

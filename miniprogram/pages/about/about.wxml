@@ -1,9 +1,33 @@
 <!--miniprogram/pages/about/about.wxml-->
-<view class="cu-custom" style="height:{{CustomBar}}px;">
+<!-- <view class="cu-custom" style="height:{{CustomBar}}px;">
   <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
     <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-      <text class='icon-back text-black'></text> <text class='text-black'>返回</text>
+      <text class='icon-back text-black'></text>
+      <text class='text-black'>返回</text>
     </navigator>
   </view>
+</view> -->
+
+<view class="background cu-custom" mode="scaleToFill">
+  <view class="cu-bar">
+    <navigator class='action' open-type="navigateBack" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;" delta="1" hover-class="none">
+      <text class='icon-back text-black'></text>
+      <text class='text-black'>返回</text>
+    </navigator>
+  </view>
+  <view class="UCenter-bg">
+    <image src="https://avatars2.githubusercontent.com/u/45254932?s=400&v=4" class="cu-avatar xl round"></image>
+    <view class="margin-center-sm">Isc-</view>
+    <view class="margin-center-sm">
+      <text class="text-center">ccccym666@gmail.com\n</text>
+      <text class="text-center">11712225@mail.sustech.edu.cn</text>
+    </view>
+    <text>\n\n\n</text>
+    <image src="https://avatars2.githubusercontent.com/u/21023948?v=4" class="cu-avatar xl round"></image>
+    <view class="margin-center-sm">Aaron</view>
+    <view class="margin-center-sm">
+      <text class="text-center">Airine0119@gmail.com\n</text>
+      <text class="text-center">https://blog.aaron-xin.tech</text>
+    </view>
+  </view>
 </view>
-<text>miniprogram/pages/about/about.wxml</text>

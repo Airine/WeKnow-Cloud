@@ -22,10 +22,6 @@ Component({
         title: '田闰心',
         img: 'https://image.weilanwl.com/color2.0/plugin/qpczdh2307.jpg',
         url: './application/application'
-      }, {
-        title: 'GPA计算器',
-        img: 'https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg',
-        url: '../GPACalculator/GPACalculator'
       }
     ]
   },
