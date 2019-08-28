@@ -9,7 +9,7 @@
     <view class="margin-center-sm">
       <text>{{userInfo.nickName}}</text>
     </view>
-    <image src="https://image.weilanwl.com/gif/wave.gif" mode="bottom" class="gif-wave"></image>
+    <image src="../../src/img/wave.gif" mode="bottom" class="gif-wave"></image>
   </view>
 
   <!-- 数字组件 -->
