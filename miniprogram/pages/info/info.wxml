@@ -40,13 +40,12 @@
         <text class="text-grey">个人设置</text>
       </navigator>
     </view> -->
-    <navigator class="cu-item arrow" url="../GPACalculator/GPACalculator">
+    <view class="cu-item arrow" bindtap="getGPA">
       <view class="content">
         <text class="cuIcon-read text-grey"></text>
         <text class="text-grey">我的GPA</text>
       </view>
-      <!-- </navigator> -->
-    </navigator>
+    </view>
 
     <view class="cu-item arrow">
       <navigator class="content">

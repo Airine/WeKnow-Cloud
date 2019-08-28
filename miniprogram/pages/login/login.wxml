@@ -21,10 +21,15 @@
     </view>
   </form>
   <view class="cu-form-group margin-top" style="margin: 20rpx 40rpx 20rpx 40rpx ">
-		<view class="title">Store the SID and PWD locally</view>
-		<switch class="yellow sm"  checked bindtap="selected"></switch>
-	</view>
+    <view class="title">Store the SID and PWD locally</view>
+    <switch class="yellow sm" checked bindtap="selected"></switch>
+  </view>
   <view class="padding flex flex-direction">
     <button class="cu-btn bg-yellow lg" bindtap='login'>Login</button>
+  </view>
+  <view class="grid col-5 skip-login" bindtap='skip_login'>
+    <button class="cu-btn round lines-yellow shadow">
+      <view style="font-weight:500">Skip login</view>
+    </button>
   </view>
 </view>

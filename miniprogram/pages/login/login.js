@@ -147,6 +147,7 @@ Page({
             console.log(res.data)
             app.globalData.SID = that.data.SID
             app.globalData.PWD = that.data.PWD
+            app.globalData.CASLogin = true
 
             // 在本地保存login info，免去以后的登录之苦
             if (that.data.store) {
@@ -175,6 +176,12 @@ Page({
       })
 
     }
+  },
+
+  skip_login(){
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
 
   inputID: function(e) {
