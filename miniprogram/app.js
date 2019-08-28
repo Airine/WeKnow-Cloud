@@ -79,7 +79,7 @@ App({
 
     // 在本地获取login info，如果本地存在的话就免去登录的步骤
     let loginInfo = wx.getStorageSync("loginInfo")
-    console.log(loginInfo)
+    // console.log(loginInfo)
     if (loginInfo != "") {
       this.globalData.SID = loginInfo.SID
       this.globalData.PWD = loginInfo.PWD
@@ -100,8 +100,8 @@ App({
                 url: 'pages/login/login',
               })
             } else {
-              console.log(that.globalData.SID)
-              console.log(that.globalData.PWD)
+              // console.log(that.globalData.SID)
+              // console.log(that.globalData.PWD)
               // 处理数据
               that.getCourseArray_Info(res.data)
             }
@@ -114,7 +114,7 @@ App({
 
   // 处理res.data以得到CourseInfo和CourseArray的函数
   getCourseArray_Info(res) {
-    console.log(res)
+    // console.log(res)
     const that = this
     let originData = res
     // 下面开始对originData处理数据，以获得CourseInfo和CourseArray
@@ -205,7 +205,7 @@ App({
     // app.globalData.CourseInfo = that.data.CourseInfo
     that.globalData.CourseArray = originData
     // console.log(app.globalData.userInfo)
-    console.log(this.globalData.CourseInfo)
+    // console.log(this.globalData.CourseInfo)
     wx.switchTab({
       url: '../index/index',
     })

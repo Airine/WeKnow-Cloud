@@ -85,7 +85,7 @@ Component({
     // 选择学期的点击事件
     selectTerm(e) {
       const term = e.currentTarget.dataset.term
-      console.log(term)
+      // console.log(term)
       let termName = term.name
       if (term.id == -1) {
         termName = '全部'
@@ -103,7 +103,7 @@ Component({
     // 选择分数的点击事件
     gradeSelectItem(e) {
       const grade = e.currentTarget.dataset.grade
-      console.log(grade)
+      // console.log(grade)
       let gradeName = grade.name
       if (grade.id == -1) {
         gradeName = '全部'

@@ -31,16 +31,17 @@ Page({
     inputVal: "",
     swiperOn: false,
     movies: [{
-        url: '../../src/img/1.jpeg'
+        // url: '../../src/img/1.jpeg'
+        url: 'https://newshub.sustech.edu.cn/zh/wp-content/uploads/2019/08/2019082715024237.jpg'
       },
       {
-        url: '../../src/img/2.jpeg'
+        url: 'https://newshub.sustech.edu.cn/zh/wp-content/uploads/2019/08/2019082710174748.png'
       },
       {
-        url: '../../src/img/3.jpeg'
+        url: 'https://newshub.sustech.edu.cn/zh/wp-content/uploads/2019/08/2019082611484718.jpg'
       },
       {
-        url: '../../src/img/4.jpeg'
+        url: 'https://www.sustech.edu.cn/wp-content/uploads/20190621z-1080y-1.jpg'
       }
     ],
     // tab 相关
@@ -140,7 +141,7 @@ Page({
               avatarUrl: res.userInfo.avatarUrl,
               userInfo: res.userInfo,
             });
-            console.log(res)
+            // console.log(res)
             // console.log('userInfo', res.userInfo)
             app.globalData.avatarUrl = res.userInfo.avatarUrl;
             app.globalData.userInfo = res.userInfo;

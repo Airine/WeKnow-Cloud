@@ -2,9 +2,11 @@
 
 <view class="cu-custom" style="height:{{CustomBar}}px;">
   <view class="cu-bar fixed none-bg text-black bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
+    <!-- <view class='content' style='top:{{StatusBar}}px;'>
+      <image src="/src/img/weknowLogo.png" mode='widthFix'></image>
+	  <!-- <text>WeKnow SUSTech</text> -->
     <view class='content' style='top:{{StatusBar}}px;'>
-      <!-- <image src="/src/img/text-logo.png" mode='widthFix'></image> -->
-	  <text>Citric Know</text>
+      <image src="/src/img/weknow-logo.png" mode='widthFix'></image>
     </view>
   </view>
 </view>

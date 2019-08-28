@@ -44,7 +44,7 @@ Page({
 
     // console.log(app.globalData.SID)
     // console.log(app.globalData.PWD)
-    console.log(app.globalData.CourseInfo)
+    // console.log(app.globalData.CourseInfo)
     // console.log(app.globalData.CourseArray)
   },
 
@@ -186,7 +186,7 @@ Page({
             nothing: true
           })
         } else {
-          console.log(that.data.CourseArray)
+          // console.log(that.data.CourseArray)
         }
         // if (!list.length) {
         //   this.setData({
