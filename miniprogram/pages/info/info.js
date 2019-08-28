@@ -16,6 +16,7 @@ Page({
     visitTotal: 0,
     // 计算目前资源占用
     currentSize: 0,
+    CASLogin: false,
   },
 
 	/**
@@ -37,6 +38,7 @@ Page({
           var app = getApp()
           this.setData({
             logged: true,
+            CASLogin: app.globalData.CASLogin,
             avatarUrl: app.globalData.avatarUrl,
             userInfo: app.globalData.userInfo,
           });
@@ -189,5 +191,28 @@ Page({
         };
       }
     });
+  },
+
+
+  getGPA(){
+    const _this = this
+    if(!_this.data.CASLogin){
+      wx.showModal({
+        title: '需要登录',
+        content: '经检查发现您没有成功登录，现将跳转到登录界面。',
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户确定")
+            wx.redirectTo({
+              url: '../login/login',
+            })
+          }
+        }
+      })
+    }else{
+      wx.redirectTo({
+        url: '../GPACalculator/GPACalculator',
+      })
+    }
   },
 })

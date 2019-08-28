@@ -47,6 +47,7 @@ App({
           }]
         }
       },
+      CASLogin:false,
       CourseArray: [],
     }
 
