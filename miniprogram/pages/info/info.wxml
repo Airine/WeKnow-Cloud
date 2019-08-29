@@ -48,10 +48,10 @@
     </view>
 
     <view class="cu-item arrow">
-      <navigator class="content">
+      <view class="content" bindtap="goToBUS">
         <text class="cuIcon-deliver text-red"></text>
         <text class="text-grey">南科大校巴</text>
-      </navigator>
+      </view>
     </view>
 
 

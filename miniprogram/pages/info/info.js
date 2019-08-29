@@ -193,6 +193,17 @@ Page({
     });
   },
 
+  goToBUS(){
+    wx.navigateToMiniProgram({
+      appId: 'wxc80998860679d78f',
+      path: 'pages/index/index',
+      success(res) {
+        // 打开成功
+        console.log('success to bus')
+      }
+    })
+  },
+
 
   getGPA(){
     const _this = this
