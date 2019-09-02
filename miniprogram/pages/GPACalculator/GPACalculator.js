@@ -266,6 +266,12 @@ Page({
       CourseArray: CourseArray
     })
     this.GPA()
+  },
+
+  goBack: function() {
+    wx.switchTab({
+      url: '../info/info',
+    })
   }
 
 
