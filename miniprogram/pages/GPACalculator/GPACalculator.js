@@ -39,6 +39,7 @@ Page({
       PWD: app.globalData.PWD,
       CourseInfo: app.globalData.CourseInfo,
     })
+    console.log(this.data.CourseInfo)
     this.getCourses(this.data.params)
     this.GPA()
 
@@ -242,6 +243,8 @@ Page({
     })
 
     // // console.log(this.data.GPA)
+
+    console.log(that.data.CourseInfo)
   },
 
   /**
