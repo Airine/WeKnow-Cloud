@@ -1,10 +1,10 @@
 <!-- <view class="content"> -->
 <view class="cu-custom" style="height:{{CustomBar}}px;">
   <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://i.loli.net/2019/04/26/5cc267e3aa839.png);">
-    <view class='action' bindtap="goBack">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
       <text class='icon-back text-black'></text>
       <text class='text-black'>返回</text>
-    </view>
+    </navigator>
   </view>
 </view>
 <view class='body' style='position:{{isShow?"fixed":""}}'>

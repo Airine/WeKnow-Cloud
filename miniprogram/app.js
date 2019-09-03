@@ -84,9 +84,8 @@ App({
     if (loginInfo != "") {
       this.globalData.SID = loginInfo.SID
       this.globalData.PWD = loginInfo.PWD
-      // wx.switchTab({
-      //   url: 'pages/index/index',
-      // })
+      this.globalData.CASLogin = true
+      
       if (this.globalData.SID && this.globalData.PWD) {
         wx.request({
           url: 'https://gpa.citric-acid.com.cn/courses/',
@@ -109,6 +108,10 @@ App({
           }
         })
       }
+    }else{
+      wx.redirectTo({
+        url: 'pages/login/login',
+      })
     }
 
   },

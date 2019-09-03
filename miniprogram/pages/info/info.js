@@ -208,20 +208,21 @@ Page({
   getGPA(){
     const _this = this
     if(!_this.data.CASLogin){
+      
       wx.showModal({
         title: '需要登录',
         content: '经检查发现您没有成功登录，现将跳转到登录界面。',
         success: function (res) {
           if (res.confirm) {
             console.log("用户确定")
-            wx.redirectTo({
+            wx.navigateTo({
               url: '../login/login',
             })
           }
         }
       })
     }else{
-      wx.redirectTo({
+      wx.navigateTo({
         url: '../GPACalculator/GPACalculator',
       })
     }

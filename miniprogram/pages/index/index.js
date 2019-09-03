@@ -6,6 +6,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var fileData = require('../../utils/data.js')
 Page({
   data: {
+    PageCur: 'index',
     // 用户信息
     userInfo: null,
     avatarUrl: '/src/icon/loginDefault.png',
@@ -152,13 +153,13 @@ Page({
 
       }
     });
-    console.log("load one time")
-    console.log(this.data.SID + "  " + this.data.PWD)
+    // console.log("load one time")
+    // console.log(this.data.SID + "  " + this.data.PWD)
     this._observer = wx.createIntersectionObserver(this)
     this._observer
       .relativeTo('.scroll-main')
       .observe('.swiper', (res) => {
-        console.log(res);
+        // console.log(res);
         this.setData({
           tabTop: res.intersectionRatio > 0
         })
@@ -217,7 +218,7 @@ Page({
   },
   tapPost: function(e) {
     var _data = e.currentTarget.dataset;
-    console.log(_data);
+    // console.log(_data);
     wx.request({
       url: "https://dev.citric-acid.com.cn/posts/" + _data.id,
       method: "GET",
@@ -261,7 +262,7 @@ Page({
       app.globalData.logged = true,
         app.globalData.avatarUrl = e.detail.userInfo.avatarUrl,
         app.globalData.userInfo = e.detail.userInfo
-      console.log('user info', e.detail.userInfo);
+      // console.log('user info', e.detail.userInfo);
       // 调用云函数,存储openid
       this.onGetOpenid();
     }
@@ -273,10 +274,10 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid);
+        // console.log('[云函数] [login] user openid: ', res.result.openid);
         // 测试
         app.globalData.openid = res.result.openid;
-        console.log('global data', app.globalData.openid)
+        // console.log('global data', app.globalData.openid)
         // wx.navigateTo({
         //   url: '../userConsole/displaySuccess/displaySuccess',
         // })
@@ -291,5 +292,10 @@ Page({
   },
   onUnload() {
     if (this._observer) this._observer.disconnect()
-  }
+  },
+  NavChange(e) {
+    this.setData({
+      PageCur: e.currentTarget.dataset.cur
+    })
+  },
 });
