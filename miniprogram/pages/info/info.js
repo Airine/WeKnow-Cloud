@@ -2,9 +2,9 @@
 const app = getApp();
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
+  /**
+   * 页面的初始数据
+   */
   data: {
     // 用户信息
     userInfo: null,
@@ -19,10 +19,10 @@ Page({
     CASLogin: false,
   },
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-  onLoad: function (options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
     const that = this
     // 登录
     wx.login({
@@ -38,41 +38,17 @@ Page({
           var app = getApp()
           this.setData({
             logged: true,
-            CASLogin: app.globalData.CASLogin,
             avatarUrl: app.globalData.avatarUrl,
             userInfo: app.globalData.userInfo,
           });
 
-          // getUsrInfo 接口废弃
-          // wx.getUserInfo({
-          //   success: res => {
-          //     // 获取信息并存储
-          //     this.setData({
-          //       logged: true,
-          //       avatarUrl: res.userInfo.avatarUrl,
-          //       userInfo: res.userInfo,
-          //     });
-          //     // 可以将 res 发送给后台解码出 unionId
-          //     // 赋值给全局变量
-          //     app.globalData.logged = true,
-          //     app.globalData.avatarUrl =  
-          //       e.detail.userInfo.avatarUrl,
-          //     app.globalData.userInfo = e.detail.userInfo
-
-          //     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-          //     // 所以此处加入 callback 以防止这种情况
-          //     if (this.userInfoReadyCallback) {
-          //       this.userInfoReadyCallback(res)
-          //     }
-          //   }
-          // })
         }
       }
     })
 
     // 计算目前资源占用
     wx.getStorageInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           currentSize: (Math.floor(res.currentSize / res.limitSize * 10000) / 100)
         });
@@ -80,52 +56,54 @@ Page({
     });
   },
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-  onReady: function () {
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
 
   },
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-  onShow: function () {
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this.setData({
+      CASLogin: app.globalData.CASLogin,
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
 
   },
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-  onHide: function () {
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
 
   },
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-  onUnload: function () {
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
 
   },
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-  onPullDownRefresh: function () {
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
 
   },
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-  onReachBottom: function () {
-
-  },
-
-	/**
-	 * 用户点击右上角分享
-	 */
-  onShareAppMessage: function () {
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
 
   },
 
@@ -133,11 +111,11 @@ Page({
     userInfo: null
   },
 
-/**
- * 登录模块
- */
-// 获取用户信息
-  onGetUserInfo: function (e) {
+  /**
+   * 登录模块
+   */
+  // 获取用户信息
+  onGetUserInfo: function(e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -155,7 +133,7 @@ Page({
   },
 
   // 调用云函数
-  onGetOpenid: function () {
+  onGetOpenid: function() {
     wx.cloud.callFunction({
       name: 'login',
       data: {},
@@ -182,7 +160,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定清空所有的备忘数据？数据一旦清空，将无法恢复！且下次登录需要自己输入密码',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           wx.clearStorageSync();
           that.setData({
@@ -193,7 +171,7 @@ Page({
     });
   },
 
-  goToBUS(){
+  goToBUS() {
     wx.navigateToMiniProgram({
       appId: 'wxc80998860679d78f',
       path: 'pages/index/index',
@@ -205,14 +183,14 @@ Page({
   },
 
 
-  getGPA(){
+  getGPA() {
     const _this = this
-    if(!_this.data.CASLogin){
-      
+    if (!_this.data.CASLogin) {
+
       wx.showModal({
         title: '需要登录',
         content: '经检查发现您没有成功登录，现将跳转到登录界面。',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             console.log("用户确定")
             wx.navigateTo({
@@ -221,7 +199,7 @@ Page({
           }
         }
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '../GPACalculator/GPACalculator',
       })
