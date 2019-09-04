@@ -119,6 +119,7 @@ Page({
 
   login() {
     var that = this;
+    console.log('用户点击Login')
     // 判断是否SID和PWD都写了内容
     if (that.data.SID && that.data.PWD) {
       wx.request({
@@ -134,6 +135,7 @@ Page({
 
         success: function(res) {
           if (res.statusCode != 200) {
+            // console.log(res.statusCode)
             wx.showModal({
               title: 'Wrong Info',
               content: 'Your SID or PWD may be wrong. Please check your input.',
