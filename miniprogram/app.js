@@ -211,7 +211,7 @@ App({
     // console.log(app.globalData.userInfo)
     // console.log(this.globalData.CourseInfo)
     wx.switchTab({
-      url: 'pages/index/index',
+      url: '../index/index',
     })
 
   },

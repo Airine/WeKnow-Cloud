@@ -146,7 +146,7 @@ Page({
               }
             })
           } else {
-            console.log(res.data)
+            // console.log(res.data)
             app.globalData.SID = that.data.SID
             app.globalData.PWD = that.data.PWD
             app.globalData.CASLogin = true
